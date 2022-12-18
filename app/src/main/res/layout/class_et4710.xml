@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="6dp"
-    tools:context=".Class_ET4710">
+    tools:context=".controller.UI.ET4710.Class_ET4710">
     <TextView
         android:layout_marginTop="20dp"
         android:id="@+id/Name_class"

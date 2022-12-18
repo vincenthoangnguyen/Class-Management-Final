@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/my_primary"
     android:padding="10dp"
-    tools:context=".MainActivity">
+    tools:context=".controller.UI.MainActivity">
     <TextView
         android:id="@+id/tv_option"
         android:layout_width="match_parent"

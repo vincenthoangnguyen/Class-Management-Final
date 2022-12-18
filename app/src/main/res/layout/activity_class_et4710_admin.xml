@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="6dp"
-    tools:context=".Class_ET4710">
+    tools:context=".controller.UI.ET4710.Class_ET4710">
     <TextView
         android:layout_marginTop="20dp"
         android:id="@+id/Name_class"
@@ -15,21 +15,37 @@
         android:gravity="center"
         android:textStyle="bold"
         android:text="Sơ đồ lớp Lập trình ứng dụng di động   ET4710 -137364"/>
-    <Button
-        android:layout_marginTop="15dp"
-        android:id="@+id/setUp_daily_code_btn"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:id="@+id/linear_btn"
         android:layout_below="@id/Name_class"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:text="Cài đặt code hàng buổi"/>
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/setUp_daily_code_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Tạo code thủ công"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"
+            android:onClick="autoGenCode"
+            android:text="tạo tự động"/>
+    </LinearLayout>
+
     <TextView
         android:text="Code hôm nay là: "
         android:textSize="20dp"
         android:visibility="gone"
         android:id="@+id/dailyCode_tv"
-        android:layout_below="@+id/setUp_daily_code_btn"
+        android:layout_below="@+id/linear_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -64,9 +80,9 @@
         android:rowCount="5">
 
         <Button
-            android:id="@+id/button40"
+            android:id="@+id/button400"
             android:layout_marginRight="5dp"
-            android:onClick="setInformationForStudent"
+            android:onClick="seeInformationStudent"
             android:layout_width="@dimen/height_table"
             android:layout_height="@dimen/height_table"
             android:background="@drawable/table_background" />
@@ -75,7 +91,7 @@
             android:id="@+id/button41"
             android:text="N10"
             android:textSize="10sp"
-            android:onClick="setInformationForStudent"
+            android:onClick="seeInformationStudent"
             android:layout_marginRight="5dp"
             android:layout_width="@dimen/height_table"
             android:layout_height="@dimen/height_table"
@@ -85,7 +101,7 @@
         <Button
             android:layout_marginRight="10dp"
             android:id="@+id/button42"
-            android:onClick="setInformationForStudent"
+            android:onClick="seeInformationStudent"
             android:background="@drawable/table_background"
             android:layout_marginBottom="30dp"
             android:layout_width="@dimen/height_table"
@@ -94,7 +110,7 @@
 
         <Button
             android:id="@+id/button43"
-            android:onClick="setInformationForStudent"
+            android:onClick="seeInformationStudent"
             android:background="@drawable/table_background"
             android:layout_marginRight="5dp"
             android:layout_width="@dimen/height_table"
@@ -105,7 +121,7 @@
             android:background="@drawable/table_background"
             android:id="@+id/button44"
             android:text="N9"
-            android:onClick="setInformationForStudent"
+            android:onClick="seeInformationStudent"
             android:layout_marginRight="5dp"
             android:layout_width="@dimen/height_table"
             android:layout_height="@dimen/height_table"
@@ -114,7 +130,7 @@
         <Button
             android:background="@drawable/table_background"
             android:id="@+id/button45"
-            android:onClick="setInformationForStudent"
+            android:onClick="seeInformationStudent"
             android:layout_width="@dimen/height_table"
             android:layout_height="@dimen/height_table"
             android:backgroundTint="#111" />

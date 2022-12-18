@@ -13,49 +13,49 @@
         android:theme="@style/Theme.ClassManagement"
         tools:targetApi="31">
         <activity
-            android:name=".Class_ET4710_Admin"
+            android:name=".controller.UI.ET4710.Class_ET4710_Admin"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".controller.UI.MainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".controller.UI.loginAndCreate.LoginActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".CreateAccountActivity"
+            android:name=".controller.UI.loginAndCreate.CreateAccountActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Class_ET4710"
+            android:name=".controller.UI.ET4710.Class_ET4710"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".InformationStudentActivity"
+            android:name=".model.InformationStudentActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SplashActivity"
+            android:name=".controller.UI.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
