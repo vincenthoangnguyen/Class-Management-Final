@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/my_primary"
+    android:padding="10dp"
+    tools:context=".MainActivity">
+    <TextView
+        android:id="@+id/tv_option"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chọn lớp học"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        android:gravity="center"/>
+    <Button
+        android:id="@+id/mobile_btn"
+        android:background="@drawable/table_background"
+        android:layout_marginTop="60dp"
+        android:textColor="#111"
+        android:textSize="20dp"
+        android:layout_below="@id/tv_option"
+        android:text="Lập trình moblie"
+        android:onClick="goToET4710"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:background="@drawable/table_background"
+        android:layout_marginTop="20dp"
+        android:textColor="#111"
+        android:textSize="20dp"
+        android:layout_below="@id/mobile_btn"
+        android:text="Mạng máy tính"
+        android:onClick="goToET4710"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ImageButton
+        android:id="@+id/menu_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_baseline_menu_24"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        app:tint="@color/white" />
+</RelativeLayout>

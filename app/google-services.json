@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "328669682991",
+    "project_id": "classmanagement-a69e1",
+    "storage_bucket": "classmanagement-a69e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328669682991:android:1b3addfd512da7aec9d5da",
+        "android_client_info": {
+          "package_name": "com.vincent.hoangnguyen.classmanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328669682991-ohkmafqs1otenusveo5vb883e6pvn072.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlI6sQTCfZHK6r7MLdjEpN69iaifjjPfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328669682991-ohkmafqs1otenusveo5vb883e6pvn072.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

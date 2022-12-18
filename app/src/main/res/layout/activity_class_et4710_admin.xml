@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="6dp"
+    tools:context=".Class_ET4710">
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/Name_class"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="Sơ đồ lớp Lập trình ứng dụng di động   ET4710 -137364"/>
+    <Button
+        android:layout_marginTop="15dp"
+        android:id="@+id/setUp_daily_code_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Name_class"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="Cài đặt code hàng buổi"/>
+    <TextView
+        android:text="Code hôm nay là: "
+        android:textSize="20dp"
+        android:visibility="gone"
+        android:id="@+id/dailyCode_tv"
+        android:layout_below="@+id/setUp_daily_code_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:text="Cửa"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:gravity="top"
+        android:background="@drawable/door"
+        android:textColor="#C81515" />
+    <TextView
+        android:id="@+id/table"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/table" />
+
+    <GridLayout
+        android:paddingStart="12dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/table"
+        android:layout_below="@id/dailyCode_tv"
+        android:columnCount="6"
+        android:rowCount="5">
+
+        <Button
+            android:id="@+id/button40"
+            android:layout_marginRight="5dp"
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:background="@drawable/table_background" />
+
+        <Button
+            android:id="@+id/button41"
+            android:text="N10"
+            android:textSize="10sp"
+            android:onClick="setInformationForStudent"
+            android:layout_marginRight="5dp"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:background="@drawable/table_background"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:layout_marginRight="10dp"
+            android:id="@+id/button42"
+            android:onClick="setInformationForStudent"
+            android:background="@drawable/table_background"
+            android:layout_marginBottom="30dp"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:id="@+id/button43"
+            android:onClick="setInformationForStudent"
+            android:background="@drawable/table_background"
+            android:layout_marginRight="5dp"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button44"
+            android:text="N9"
+            android:onClick="setInformationForStudent"
+            android:layout_marginRight="5dp"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button45"
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button30"
+            android:onClick="setInformationForStudent"
+            android:layout_marginBottom="30dp"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button31"
+            android:text="N8"
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button32"
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button33"
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button34"
+            android:text="N7"
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button35"
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button20"
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:layout_marginBottom="30dp"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button21"
+            android:text="N6"
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button2"
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button23"
+
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button24"
+            android:text="N5"
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button25"
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button10"
+            android:layout_marginBottom="30dp"
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button11"
+            android:text="N4"
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button12"
+
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button13"
+
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button14"
+            android:text="N3"
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button15"
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button00"
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button01"
+            android:text="N2"
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button02"
+
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:id="@+id/button03"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:background="@drawable/table_background"
+            android:backgroundTint="#111"
+            android:onClick="setInformationForStudent"
+            />
+
+        <Button
+            android:text="N1"
+            android:id="@+id/button04"
+            android:layout_width="@dimen/height_table"
+            android:onClick="setInformationForStudent"
+            android:layout_height="@dimen/height_table"
+            android:background="@drawable/table_background"
+            android:backgroundTint="#111" />
+
+        <Button
+            android:background="@drawable/table_background"
+            android:id="@+id/button05"
+            android:onClick="setInformationForStudent"
+            android:layout_width="@dimen/height_table"
+            android:layout_height="@dimen/height_table"
+            android:backgroundTint="#111" />
+
+
+    </GridLayout>
+</RelativeLayout>

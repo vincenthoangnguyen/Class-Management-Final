@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Class Management</string>
+    <string name="hello">Hello.</string>
+    <string name="let_s_get_started">Tạo tài khoản</string>
+    <string name="email_id">Email</string>
+    <string name="password">Mật khẩu</string>
+    <string name="confirm_password">Xác nhận mật khẩu</string>
+    <string name="create_account">Tạo tài khoản</string>
+    <string name="already_have_an_account">Nếu bạn đã có tài khoản  </string>
+    <string name="login_btn">Đăng nhập</string>
+</resources>
