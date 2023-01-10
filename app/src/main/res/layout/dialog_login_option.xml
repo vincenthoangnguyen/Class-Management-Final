@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/Name_class"
             android:hint="Admin Code"
-            android:inputType="numberPassword" />
+            android:inputType="number"/>
 
         <Button
             android:id="@+id/btn_switch_adminMode_ok"

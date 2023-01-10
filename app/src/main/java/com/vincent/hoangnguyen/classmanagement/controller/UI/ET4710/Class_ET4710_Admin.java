@@ -4,13 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -22,6 +22,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.vincent.hoangnguyen.classmanagement.ListStudent.ListStudent;
 import com.vincent.hoangnguyen.classmanagement.R;
 import com.vincent.hoangnguyen.classmanagement.model.Utility;
 
@@ -29,6 +30,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Class_ET4710_Admin extends AppCompatActivity {
     Button setUpDailyCode_btn;
@@ -36,8 +39,9 @@ public class Class_ET4710_Admin extends AppCompatActivity {
     Button dialog_ok_btn;
     ProgressBar progressBar;
     EditText dialog_dailyCode_edt;
-    TextView dailyCode_textView;
+    EditText dailyCode_textView;
     String dailycode_String;
+    Timer timerRefreshAdmin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,31 @@ public class Class_ET4710_Admin extends AppCompatActivity {
         dialog_ok_btn= dialog.findViewById(R.id.dialog_dailyCode_ok_btn);
         dialog_dailyCode_edt= dialog.findViewById(R.id.dialog_dailyCode_Edt);
         progressBar = dialog.findViewById(R.id.progress_bar3);
+        timerRefreshAdmin = new Timer();
+        timerRefreshAdmin.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+                firestore.collection("Daily code").orderBy("timestamp", Query.Direction.DESCENDING)
+                        .limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                            @Override
+                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                // lấy thành công dữ liệu trên data base
+                                for(DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()){
+                                    dailycode_String = documentSnapshot.getString("DailyCode");
+                                    dailyCode_textView.setText("Code buổi học hôm nay là: " + dailycode_String);
+                                    dailyCode_textView.setVisibility(View.VISIBLE);
+                                }
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            // nếu lấy dữ liệu thất bại
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                            }
+                        });
+            }
+        },0, 500);
        if(savedInstanceState!= null){
            // giữ nguyên code buổi học trên textview khi cấu hình thay đổi
            FirebaseFirestore firestore = FirebaseFirestore.getInstance();
@@ -60,13 +89,13 @@ public class Class_ET4710_Admin extends AppCompatActivity {
                            // lấy thành công dữ liệu trên data base
                            for(DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()){
                               dailycode_String = documentSnapshot.getString("DailyCode");
-                               dailyCode_textView.setText("Code buổi học hôm nay là:" + dailycode_String);
+                               dailyCode_textView.setText("Code buổi học hôm nay là: " + dailycode_String);
                                dailyCode_textView.setVisibility(View.VISIBLE);
                            }
                        }
                    })
                    .addOnFailureListener(new OnFailureListener() {
-                       // nếu lấy dữ liệu thất bạt
+                       // nếu lấy dữ liệu thất bại
                        @Override
                        public void onFailure(@NonNull Exception e) {
                        }
@@ -93,24 +122,6 @@ public class Class_ET4710_Admin extends AppCompatActivity {
 
     private void saveDailyCodeToFirebase(Map dailyCode) {
         changInLoginProgress(true);
-        /*CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Daily Code");
-        DocumentReference documentReference = collectionReference.document();
-        documentReference.set(dailyCode).addOnCompleteListener(new OnCompleteListener<Void>() {
-
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                changInLoginProgress(false);
-                if(task.isSuccessful()){
-                    Utility.showToast(Class_ET4710_Admin.this,"Cài đặt thành công code cho buổi học ngày hôm nay!");
-                    dailyCode_textView.setText("Code buổi học hôm nay là: " +dailyCode.getDailyCode());
-                    dailyCode_textView.setVisibility(View.VISIBLE);
-                }
-                else{
-                    Utility.showToast(Class_ET4710_Admin.this,task.getException().getLocalizedMessage());
-                }
-            }
-        });*/
-
         FirebaseFirestore db  = FirebaseFirestore.getInstance();
         // tạo 1 collection trên firebaseFirestore
         // add để thêm data vào collection đó
@@ -170,5 +181,7 @@ public class Class_ET4710_Admin extends AppCompatActivity {
     public void seeInformationStudent(View view) {
         Log.d("Button id_admin", String.valueOf(view.getId()));
     }
-
+    public void openListStudent(View view) {
+        startActivity(new Intent(Class_ET4710_Admin.this, ListStudent.class));
+    }
 }

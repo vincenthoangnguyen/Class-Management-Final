@@ -15,7 +15,7 @@ public class Utility {
     public static void showToast(Context context, String message){
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
-    static CollectionReference getCollectionReferenceForStudent(){
+    public  static CollectionReference getCollectionReferenceForStudent(){
         // khởi tạo người dùng để lấy id
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         assert currentUser != null;

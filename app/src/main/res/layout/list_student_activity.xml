@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@drawable/splash_image"
+    tools:context=".ListStudent.ListStudent">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Danh sách sinh viên"
+        android:textStyle="bold"
+        android:layout_marginVertical="10dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="30sp"/>
+   <LinearLayout
+       android:id="@+id/count_student_frame"
+       android:layout_width="wrap_content"
+       android:layout_below="@id/title"
+       android:layout_marginVertical="5dp"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal">
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textColor="@color/white"
+           android:text="Số lượng:  "/>
+       <TextView
+           android:id="@+id/count_student"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="27"
+           android:textColor="@color/white"
+           android:textStyle="bold"
+           android:textSize="20sp"/>
+   </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/recycle_view"
+        android:layout_height="match_parent"
+        android:layout_below="@id/count_student_frame"/>
+
+</RelativeLayout>

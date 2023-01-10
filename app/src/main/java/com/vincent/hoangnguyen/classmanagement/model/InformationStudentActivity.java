@@ -14,12 +14,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.vincent.hoangnguyen.classmanagement.ListStudent.ListStudent;
 import com.vincent.hoangnguyen.classmanagement.R;
 
 import java.util.Objects;
 
 public class InformationStudentActivity extends AppCompatActivity {
-    EditText nameEdt,idEdt,kEdt;
+    EditText nameEdt,idEdt,phoneNumberEdt;
     Button save_btn;
     ProgressBar progressBar;
     boolean inProgress =false;
@@ -35,15 +36,15 @@ public class InformationStudentActivity extends AppCompatActivity {
     private void saveInformationStudent() {
         String name = nameEdt.getText().toString();
         String id = idEdt.getText().toString();
-        String k = kEdt.getText().toString();
-        boolean isValidated=  validateData(name,id,k);
+        String phoneNumber = phoneNumberEdt.getText().toString();
+        boolean isValidated=  validateData(name,id,phoneNumber);
         if(!isValidated){
             return;
         }
         Student student = new Student();
         student.setName(name);
         student.setId(id);
-        student.setK(k);
+        student.setPhoneNumber(phoneNumber);
         saveStudentToFirebase(student);
 
     }
@@ -85,7 +86,7 @@ public class InformationStudentActivity extends AppCompatActivity {
             return false;
         }
         if(k == null || k.isEmpty()){
-            kEdt.setError("Bắt buộc");
+            phoneNumberEdt.setError("Bắt buộc");
             return false;
         }
         return true;
@@ -103,10 +104,24 @@ public class InformationStudentActivity extends AppCompatActivity {
     private void mapping() {
         nameEdt =  findViewById(R.id.name_student);
         idEdt = findViewById(R.id.id_student);
-        kEdt = findViewById(R.id.k_student);
+        phoneNumberEdt = findViewById(R.id.phoneNumber_student);
         save_btn = findViewById(R.id.save_btn);
         progressBar = findViewById(R.id.progress_bar2);
     }
+    public void deleteInformationOnFirebase(){
+        DocumentReference documentReference;
+        documentReference = Utility.getCollectionReferenceForStudent().document(DetailInformationActivity.docId);
+        documentReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    finish();
+                }else {
+                    Log.d("hoangdz",Objects.requireNonNull(task.getException()).getLocalizedMessage());
+                }
 
+            }
+        });
+    }
 
 }

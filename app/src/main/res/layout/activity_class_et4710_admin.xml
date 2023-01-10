@@ -40,7 +40,7 @@
             android:text="tạo tự động"/>
     </LinearLayout>
 
-    <TextView
+    <EditText
         android:text="Code hôm nay là: "
         android:textSize="20dp"
         android:visibility="gone"
@@ -65,6 +65,7 @@
         android:id="@+id/table"
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:onClick="openListStudent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:background="@drawable/table" />
@@ -342,7 +343,6 @@
             android:layout_width="@dimen/height_table"
             android:layout_height="@dimen/height_table"
             android:backgroundTint="#111" />
-
-
     </GridLayout>
+
 </RelativeLayout>

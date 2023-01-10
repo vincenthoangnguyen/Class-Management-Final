@@ -36,12 +36,12 @@
         android:padding="15dp"
         android:background="@drawable/rounder_background"/>
     <EditText
-        android:id="@+id/k_student"
+        android:id="@+id/phoneNumber_student"
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/id_student"
-        android:hint="Khóa"
+        android:hint="Số điện thoại"
         android:inputType="number"
         android:padding="15dp"
         android:background="@drawable/rounder_background"/>
@@ -55,7 +55,7 @@
         android:layout_width="70dp"
         android:layout_height="50dp"
         android:background="@drawable/rounder_background"
-        android:layout_below="@id/k_student"/>
+        android:layout_below="@id/phoneNumber_student"/>
     <ProgressBar
         android:id="@+id/progress_bar2"
         android:layout_marginTop="30dp"

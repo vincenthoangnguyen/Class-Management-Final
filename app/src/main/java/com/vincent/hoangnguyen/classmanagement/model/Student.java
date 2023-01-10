@@ -3,7 +3,7 @@ package com.vincent.hoangnguyen.classmanagement.model;
 public class Student {
     private String name;
     private String id;
-    private String k;
+    private String phoneNumber;
 
     public Student() {
     }
@@ -24,11 +24,11 @@ public class Student {
         this.id = id;
     }
 
-    public String getK() {
-        return k;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setK(String k) {
-        this.k = k;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
