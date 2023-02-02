@@ -13,10 +13,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.vincent.hoangnguyen.classmanagement.ListStudent.ListStudent;
 import com.vincent.hoangnguyen.classmanagement.R;
 
+import java.sql.Time;
 import java.util.Objects;
 
 public class InformationStudentActivity extends AppCompatActivity {
@@ -44,6 +47,7 @@ public class InformationStudentActivity extends AppCompatActivity {
         Student student = new Student();
         student.setName(name);
         student.setId(id);
+        student.setTimestamp(Timestamp.now());
         student.setPhoneNumber(phoneNumber);
         saveStudentToFirebase(student);
 
@@ -51,14 +55,12 @@ public class InformationStudentActivity extends AppCompatActivity {
 
     private void saveStudentToFirebase(Student student) {
         changInLoginProgress(true);
-        DocumentReference documentReference;
-        documentReference = Utility.getCollectionReferenceForStudent().document();
-        documentReference.set(student).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseFirestore db  = FirebaseFirestore.getInstance();
+        db.collection("ET4710_information").add(student).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
+            public void onComplete(@NonNull Task<DocumentReference> task) {
                 changInLoginProgress(false);
                 if(task.isSuccessful()){
-                    //notes is added
                     Utility.showToast(InformationStudentActivity.this,"Lưu thành công");
                     Intent intent = new Intent();
                     boolean clicked = true;
@@ -66,12 +68,13 @@ public class InformationStudentActivity extends AppCompatActivity {
                     setResult(RESULT_OK,intent);
                     finish();
                 }else {
-                    Log.d("hoangdz",Objects.requireNonNull(task.getException()).getLocalizedMessage());
+                    Log.d("hoangtest",Objects.requireNonNull(task.getException()).getLocalizedMessage());
                     Utility.showToast(InformationStudentActivity.this, Objects.requireNonNull(task.getException()).getLocalizedMessage());
                 }
 
             }
         });
+
     }
 
 

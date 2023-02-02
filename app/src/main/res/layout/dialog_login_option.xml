@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Chọn chế độ người dùng"
+        android:text="@string/text_OptionLogin"
         android:textSize="32sp"
         android:textStyle="bold" />
 
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:text="Sinh viên"
+            android:text="@string/text_student"
             android:textSize="15sp"
             app:cornerRadius="15dp" />
 
@@ -35,7 +35,7 @@
             android:id="@+id/admin_mode_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Thầy"
+            android:text="@string/text_Teacher"
             android:textSize="15sp"
             app:cornerRadius="15dp" />
     </LinearLayout>
@@ -47,7 +47,7 @@
         android:layout_marginTop="15dp"
         android:gravity="center"
         android:visibility="gone"
-        android:text="Hãy nhập code ngày hôm nay để tiến hành điểm danh"
+        android:text="@string/text_nhapCodeSinhVien"
         android:textSize="22sp" />
 
     <TextView
@@ -57,7 +57,7 @@
         android:layout_marginTop="15dp"
         android:gravity="center"
         android:visibility="gone"
-        android:text="Hãy nhập code xác thực thầy giáo "
+        android:text="@string/text_nhapCodeThaygiao"
         android:textSize="22sp" />
 
     <LinearLayout

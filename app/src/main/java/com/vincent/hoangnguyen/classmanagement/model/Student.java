@@ -1,11 +1,22 @@
 package com.vincent.hoangnguyen.classmanagement.model;
 
+import com.google.firebase.Timestamp;
+
 public class Student {
     private String name;
     private String id;
     private String phoneNumber;
+    private com.google.firebase.Timestamp timestamp;
 
     public Student() {
+    }
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
 
     public String getName() {

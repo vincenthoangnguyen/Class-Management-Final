@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Class Management</string>
+    <string name="hello">Xin chào.</string>
+    <string name="let_s_get_started">Tạo tài khoản</string>
+    <string name="email_id">Email</string>
+    <string name="password">Mật khẩu</string>
+    <string name="confirm_password">Xác nhận mật khẩu</string>
+    <string name="create_account">Tạo tài khoản</string>
+    <string name="already_have_an_account">Nếu bạn đã có tài khoản  </string>
+    <string name="login_btn">Đăng nhập</string>
+    <string name="text_nhapCodeTuyY">Nhập code hàng ngày tùy thầy muốn</string>
+    <string name="text_questionAccount">Nếu bạn đã có tài khoản</string>
+    <string name="text_name">Họ tên</string>
+    <string name="text_id">Mã Sinh viên</string>
+    <string name="text_phoneNumber">Số điện thoại</string>
+    <string name="text_subjectClass">Lớp</string>
+    <string name="text_delete">Xóa hồ sơ này</string>
+    <string name="text_dienThongTin">Điền thông tin</string>
+    <string name="text_fullName">Họ Và tên</string>
+    <string name="text_save">Lưu</string>
+    <string name="text_welcomeBack">Chào mừng quay lại</string>
+    <string name="login_text_btn">Đăng nhập</string>
+    <string name="text_banChuaCotaiKhoan">Nếu bạn chưa có tài khoản</string>
+    <string name="text_createAccount">Tạo tài khoản</string>
+    <string name="chooseSubject_main_text">Chọn lớp học</string>
+    <string name="mobile_nameSubject">Lập trình moblie</string>
+    <string name="nameSubject_ComputerNetwork">Mạng máy tính</string>
+    <string name="text_SoDoLop">Sơ đồ lớp Lập trình ứng dụng di động ET4710 -137364</string>
+    <string name="text_OptionLogin">Chọn chế độ người dùng</string>
+    <string name="text_student">Sinh viên</string>
+    <string name="text_Teacher">Thầy</string>
+    <string name="text_nhapCodeSinhVien">Hãy nhập code ngày hôm nay để tiến hành điểm danh</string>
+    <string name="text_nhapCodeThaygiao">Hãy nhập code xác thực thầy giáo</string>
+    <string name="text_listStudent">Danh sách sinh viên</string>
+    <string name="text_soluongSinvien">Số lượng:</string>
+    <string name="language_text">Ngôn ngữ</string>
+    <string name="manualCode_btn">Tạo code thủ công</string>
+    <string name="automaticGenCode_btn">tạo tự động</string>
+    <string name="dailycode_text">Code hôm nay là:</string>
+    <string name="logout">Đăng xuất</string>
+    <string name="setUpTimeCloseDoor_btn">Cài đặt giờ đóng cửa</string>
+</resources>

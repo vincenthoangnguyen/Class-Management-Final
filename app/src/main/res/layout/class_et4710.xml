@@ -14,7 +14,7 @@
         android:textSize="20sp"
         android:gravity="center"
         android:textStyle="bold"
-        android:text="Sơ đồ lớp Lập trình ứng dụng di động   ET4710 -137364"/>
+        android:text="@string/text_SoDoLop"/>
 
 
     <TextView
@@ -22,17 +22,16 @@
         android:layout_height="70dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:text="Cửa"
         android:textStyle="bold"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:gravity="top"
-        android:background="@drawable/door"
+        android:background="@drawable/ic_baseline_sensor_door_24"
         android:textColor="#C81515" />
     <TextView
         android:id="@+id/table"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:background="@drawable/table" />
 

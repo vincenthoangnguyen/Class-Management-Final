@@ -45,6 +45,5 @@ public class Class_ET4710 extends AppCompatActivity {
     }
 }
 
-
 }
 

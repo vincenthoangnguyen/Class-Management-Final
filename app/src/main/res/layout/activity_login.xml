@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginHorizontal="32dp"
     android:layout_marginVertical="16dp"
     tools:context=".controller.UI.loginAndCreate.LoginActivity">
+
+    <TextView
+        android:id="@+id/menu_tv_language"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/ic_baseline_language_24"
+        android:onClick="openMenuLanguage"
+        android:padding="20dp" />
 
     <ImageView
         android:id="@+id/signIn_icon"
@@ -29,17 +41,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="Xin chào."
+            android:text="@string/hello"
             android:textColor="@color/black"
             android:textSize="32sp"
             android:textStyle="bold" />
 
         <TextView
+            android:padding="2dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Chào mừng quay lại"
+            android:text="@string/text_welcomeBack"
             android:textColor="@color/black"
-            android:textSize="36sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -68,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/backgroundeditext"
-            android:hint="Mật khẩu"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:padding="16dp"
             android:textSize="20sp" />
@@ -80,7 +93,7 @@
             android:layout_height="64dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/backgroundeditext"
-            android:text="Đăng nhập" />
+            android:text="@string/login_text_btn" />
         <ProgressBar
             android:id="@+id/login_progress_bar"
             android:layout_marginTop="15dp"
@@ -98,13 +111,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nếu bạn chưa có tài khoản " />
+            android:text="@string/text_banChuaCotaiKhoan" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:id="@+id/create_account_btn_textview"
-            android:text="Tạo tài khoản"/>
+            android:text="@string/text_createAccount"/>
 
     </LinearLayout>
 </RelativeLayout>

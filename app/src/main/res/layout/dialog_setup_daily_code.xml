@@ -13,7 +13,7 @@
         android:padding="15dp"
         android:layout_marginVertical="15dp"
         android:background="@drawable/rounder_background"
-        android:hint="Nhập code hàng ngày tùy thầy muốn"
+        android:hint="@string/text_nhapCodeTuyY"
         android:minHeight="48dp" />
     <Button
         android:id="@+id/dialog_dailyCode_ok_btn"

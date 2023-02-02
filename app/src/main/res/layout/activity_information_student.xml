@@ -11,7 +11,7 @@
         android:id="@+id/tv_nameForm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Điền thông tin"
+        android:text="@string/text_dienThongTin"
         android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_nameForm"
-        android:hint="Họ Và tên"
+        android:hint="@string/text_fullName"
         android:padding="15dp"
         android:background="@drawable/rounder_background"/>
     <EditText
@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/name_student"
-        android:hint="MSSV"
+        android:hint="@string/text_id"
         android:inputType="number"
         android:padding="15dp"
         android:background="@drawable/rounder_background"/>
@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/id_student"
-        android:hint="Số điện thoại"
+        android:hint="@string/text_phoneNumber"
         android:inputType="number"
         android:padding="15dp"
         android:background="@drawable/rounder_background"/>
@@ -49,19 +49,19 @@
 
     <Button
         android:layout_marginTop="30dp"
-        android:text="Lưu"
+        android:text="@string/text_save"
         android:id="@+id/save_btn"
         android:layout_centerHorizontal="true"
-        android:layout_width="70dp"
-        android:layout_height="50dp"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
         android:background="@drawable/rounder_background"
         android:layout_below="@id/phoneNumber_student"/>
     <ProgressBar
         android:id="@+id/progress_bar2"
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
-        android:layout_width="70dp"
-        android:layout_height="50dp"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
         android:visibility="gone"
         android:layout_below="@id/save_btn"/>
 </RelativeLayout>

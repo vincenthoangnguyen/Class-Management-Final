@@ -2,6 +2,7 @@ package com.vincent.hoangnguyen.classmanagement.controller.UI;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,12 +29,14 @@ import com.vincent.hoangnguyen.classmanagement.controller.UI.ET4710.Class_ET4710
 import com.vincent.hoangnguyen.classmanagement.controller.UI.loginAndCreate.LoginActivity;
 import com.vincent.hoangnguyen.classmanagement.model.Utility;
 
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     ImageButton menu_btn;
     Timer timerRefresh;
+    private String currentLanguage = "en"; // Current language is English
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,17 +49,29 @@ public class MainActivity extends AppCompatActivity {
     // menu đăng xuất
     private void showMenu() {
         PopupMenu popupMenu = new PopupMenu(MainActivity.this, menu_btn);
-        popupMenu.getMenu().add("Đăng xuất");
+        popupMenu.getMenu().add("English");
+        popupMenu.getMenu().add("Tiếng Việt");
+        popupMenu.getMenu().add(R.string.logout);
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if (item.getTitle() == "Đăng xuất") {
+                if (item.getTitle().equals("Đăng xuất") || item.getTitle().equals("Logout")) {
                     // đăng xuất khỏi firebase
                     FirebaseAuth.getInstance().signOut();
                     // chuyển tới màn hình login
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                     finish();
+                }
+                if(item.getTitle() == "English"){
+                    setLocale("en");
+                    currentLanguage = "en";
+                    recreate();
+                }
+                if(item.getTitle() == "Tiếng Việt"){
+                    setLocale("vi");
+                    currentLanguage = "vi";
+                    recreate();
                 }
 
                 return false;
@@ -153,8 +168,6 @@ public class MainActivity extends AppCompatActivity {
                         });
             }
         }, 0, 5000);
-
-
         // show dialog sau khi nhấn lớp ET4710
         dialog.show();
     }
@@ -170,5 +183,11 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
-
+    private void setLocale(String language) {
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+        Configuration configuration = new Configuration();
+        configuration.setLocale(locale);
+        getBaseContext().getResources().updateConfiguration(configuration,getBaseContext().getResources().getDisplayMetrics());
+    }
 }

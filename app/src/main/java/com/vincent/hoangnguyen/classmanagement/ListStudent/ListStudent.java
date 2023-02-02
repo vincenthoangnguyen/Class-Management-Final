@@ -24,10 +24,8 @@ public class ListStudent extends AppCompatActivity {
         setUpRecycleView();
     }
 
-
-
     void setUpRecycleView(){
-        Query query = Utility.getCollectionReferenceForStudent();
+        Query query = Utility.getCollectionReferenceForStudent().orderBy("timestamp", Query.Direction.ASCENDING);
         FirestoreRecyclerOptions<Student> options = new FirestoreRecyclerOptions.Builder<Student>()
                 .setQuery(query,Student.class).build();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

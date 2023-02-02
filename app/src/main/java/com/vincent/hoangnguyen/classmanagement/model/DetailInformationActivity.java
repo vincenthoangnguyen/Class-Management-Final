@@ -28,7 +28,7 @@ public class DetailInformationActivity extends AppCompatActivity {
         phoneNumberTv = findViewById(R.id.detail_sdt);
         deleteTv =findViewById(R.id.detail_delete_tv);
         deleteTv.setOnClickListener(view -> deleteInformation());
-        //receive data
+        //receive data từ information adapter
         name = getIntent().getStringExtra("Name");
         id = getIntent().getStringExtra("Id");
         phoneNumber = getIntent().getStringExtra("PhoneNumber");
@@ -61,6 +61,7 @@ public class DetailInformationActivity extends AppCompatActivity {
         });
         alertDialog.show();
     }
+
 
     public void makeAMessage(View view) {
         String smsNumber = String.format("smsto: %s",phoneNumber);

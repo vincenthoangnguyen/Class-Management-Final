@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:id="@+id/fullLayout"
     android:orientation="vertical"
     android:padding="5dp"
     android:layout_marginVertical="5dp"
@@ -17,6 +18,7 @@
         android:src="@drawable/avatar_24" />
 
     <LinearLayout
+        android:id="@+id/frame_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -28,7 +30,7 @@
             android:id="@+id/recycle_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Họ tên"
+            android:text="@string/text_fullName"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -37,9 +39,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="4dp"
-            android:text="mssv"
+            android:text="@string/text_id"
             android:textSize="20sp" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/timeStampLayout"
+        android:textSize="16sp"
+        android:layout_below="@id/frame_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:text="timeStamp" />
 
 </RelativeLayout>

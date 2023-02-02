@@ -4,11 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -20,6 +23,7 @@ import com.vincent.hoangnguyen.classmanagement.R;
 import com.vincent.hoangnguyen.classmanagement.controller.UI.MainActivity;
 import com.vincent.hoangnguyen.classmanagement.model.Utility;
 
+import java.util.Locale;
 import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
@@ -27,6 +31,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText email_login_edittext,password_login_edittext;
     private TextView createAccount_textview_btn;
     private ProgressBar progressBar;
+    private TextView menu_language;
+    private String currentLanguage = "en";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,6 +114,37 @@ public class LoginActivity extends AppCompatActivity {
         password_login_edittext = findViewById(R.id.loginPassword);
         createAccount_textview_btn = findViewById(R.id.create_account_btn_textview);
         progressBar = findViewById(R.id.login_progress_bar);
+        menu_language = findViewById(R.id.menu_tv_language);
 
+    }
+
+    public void openMenuLanguage(View view) {
+        PopupMenu menu = new PopupMenu(LoginActivity.this, menu_language);
+        menu.getMenu().add("English");
+        menu.getMenu().add("Tiếng Việt");
+        menu.show();
+        menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if(item.getTitle() == "English"){
+                    setLocale("en");
+                    currentLanguage = "en";
+                    recreate();
+                }
+                if(item.getTitle() == "Tiếng Việt"){
+                    setLocale("vi");
+                    currentLanguage = "vi";
+                    recreate();
+                }
+                return false;
+            }
+        });
+    }
+    private void setLocale(String language) {
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+        Configuration configuration = new Configuration();
+        configuration.setLocale(locale);
+        getBaseContext().getResources().updateConfiguration(configuration,getBaseContext().getResources().getDisplayMetrics());
     }
 }

@@ -19,12 +19,12 @@ public class Utility {
         // khởi tạo người dùng để lấy id
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         assert currentUser != null;
-        return FirebaseFirestore.getInstance().collection("ET4710")
-                .document(currentUser.getUid()).collection("Information");
+        return FirebaseFirestore.getInstance().collection("ET4710_information");
     }
     // tạo  hàm chuyển timestamp sang String
     static String timeStampToString(Timestamp timestamp){
-        return new SimpleDateFormat("dd-MM-yyyy   HH:mm:ss").format(timestamp.toDate());
+        //return new SimpleDateFormat("dd-MM-yyyy   HH:mm:ss").format(timestamp.toDate());
+        return new SimpleDateFormat("HH:mm:ss").format(timestamp.toDate());
     }
 
 }

@@ -42,6 +42,7 @@ public class Class_ET4710_Admin extends AppCompatActivity {
     EditText dailyCode_textView;
     String dailycode_String;
     Timer timerRefreshAdmin;
+    public static String TimeClosing;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -183,5 +184,17 @@ public class Class_ET4710_Admin extends AppCompatActivity {
     }
     public void openListStudent(View view) {
         startActivity(new Intent(Class_ET4710_Admin.this, ListStudent.class));
+    }
+    public void setUpTimeClosing(View view) {
+    Dialog setTimeDialog = new Dialog(this);
+    setTimeDialog.setContentView(R.layout.set_closing_time_dialog);
+    EditText edt = setTimeDialog.findViewById(R.id.timeClosing_edt);
+    Button ok = setTimeDialog.findViewById(R.id.ok_dialog_timeClosing);
+    ok.setOnClickListener(v -> {
+        TimeClosing = edt.getText().toString();
+        Utility.showToast(this,"Thành công");
+        setTimeDialog.dismiss();
+    });
+    setTimeDialog.show();
     }
 }

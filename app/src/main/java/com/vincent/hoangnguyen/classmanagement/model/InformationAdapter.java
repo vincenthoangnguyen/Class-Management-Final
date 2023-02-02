@@ -2,9 +2,13 @@ package com.vincent.hoangnguyen.classmanagement.model;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,7 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.Timestamp;
 import com.vincent.hoangnguyen.classmanagement.R;
+import com.vincent.hoangnguyen.classmanagement.controller.UI.ET4710.Class_ET4710_Admin;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Date;
 
 public class InformationAdapter extends FirestoreRecyclerAdapter<Student,InformationAdapter.InformationHolder> {
     /**
@@ -31,18 +42,29 @@ public class InformationAdapter extends FirestoreRecyclerAdapter<Student,Informa
     protected void onBindViewHolder(@NonNull InformationHolder holder, int position, @NonNull Student student) {
     holder.nameTextview.setText(student.getName());
     holder.mssvTextview.setText(student.getId());
+    holder.timeStamp.setText(Utility.timeStampToString(student.getTimestamp()));
+    // so sánh 2 mốc time stamp nếu quá 12h40 thì tính là đi muộn
+    String timeStudentArrive = Utility.timeStampToString(student.getTimestamp());
+        String closeDoorTime = "12:40:00";
+       // String closeDoorTime = Class_ET4710_Admin.TimeClosing;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if(LocalTime.parse(timeStudentArrive).isAfter(LocalTime.parse(closeDoorTime))){ // nếu học sinh đi muộn
+               holder.layout.setBackgroundColor(Color.RED);
+            }
 
-    holder.itemView.setOnClickListener(view -> {
-        Intent intent = new Intent(context, DetailInformationActivity.class);
-        intent.putExtra("Name",student.getName());
-        intent.putExtra("Id",student.getId());
-        intent.putExtra("PhoneNumber",student.getPhoneNumber());
-        String docID = this.getSnapshots().getSnapshot(position).getId();
-        intent.putExtra("docID", docID);
-        context.startActivity(intent);
-    });
+            // khi nhấn vào 1 recycleview thì chuyển đến màn detailInformation và put data sang
+            holder.itemView.setOnClickListener(view -> {
+                Intent intent = new Intent(context, DetailInformationActivity.class);
+                // put dữ liệu sang màn detailInformation
+                intent.putExtra("Name",student.getName());
+                intent.putExtra("Id",student.getId());
+                intent.putExtra("PhoneNumber",student.getPhoneNumber());
+                String docID = this.getSnapshots().getSnapshot(position).getId();
+                intent.putExtra("docID", docID);
+                context.startActivity(intent);
+            });
+        }
     }
-
     @NonNull
     @Override
     public InformationHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -51,12 +73,14 @@ public class InformationAdapter extends FirestoreRecyclerAdapter<Student,Informa
     }
 
     static class InformationHolder extends RecyclerView.ViewHolder{
-        TextView nameTextview,mssvTextview;
+        TextView nameTextview,mssvTextview,timeStamp;
+        RelativeLayout layout;
         public InformationHolder(@NonNull View itemView) {
             super(itemView);
             nameTextview = itemView.findViewById(R.id.recycle_name);
             mssvTextview = itemView.findViewById(R.id.recycle_mssv);
-
+            timeStamp = itemView.findViewById(R.id.timeStampLayout);
+            layout = itemView.findViewById(R.id.fullLayout);
         }
     }
 }
