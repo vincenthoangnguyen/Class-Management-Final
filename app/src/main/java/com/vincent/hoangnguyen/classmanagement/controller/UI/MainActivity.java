@@ -117,7 +117,9 @@ public class MainActivity extends AppCompatActivity {
             if (!isValidated) {
                 return;
             }
-            if (code.equals("0934660554")) {
+
+            //if (code.equals("0934660554")) {
+            if(code.equals("123")){
                 Utility.showToast(MainActivity.this, "Chào Mừng Thầy Tuấn");
                 startActivity(new Intent(MainActivity.this, Class_ET4710_Admin.class));
             } else {

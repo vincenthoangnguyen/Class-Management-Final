@@ -32,7 +32,7 @@
     <string name="text_nhapCodeSinhVien">Please enter the code today to take attendance</string>
     <string name="text_nhapCodeThaygiao">Please enter the teacher verification code</string>
     <string name="text_listStudent">List of students</string>
-    <string name="text_soluongSinvien">Amount: </string>
+    <string name="text_soluongSinhvien">Amount: </string>
     <string name="language_text">Language</string>
     <string name="manualCode_btn">Manual generation</string>
     <string name="automaticGenCode_btn">Auto </string>

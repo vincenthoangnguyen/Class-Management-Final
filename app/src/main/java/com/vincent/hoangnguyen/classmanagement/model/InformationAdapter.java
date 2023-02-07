@@ -16,7 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.vincent.hoangnguyen.classmanagement.R;
 import com.vincent.hoangnguyen.classmanagement.controller.UI.ET4710.Class_ET4710_Admin;
 
@@ -43,12 +50,13 @@ public class InformationAdapter extends FirestoreRecyclerAdapter<Student,Informa
     holder.nameTextview.setText(student.getName());
     holder.mssvTextview.setText(student.getId());
     holder.timeStamp.setText(Utility.timeStampToString(student.getTimestamp()));
-    // so sánh 2 mốc time stamp nếu quá 12h40 thì tính là đi muộn
+
     String timeStudentArrive = Utility.timeStampToString(student.getTimestamp());
-        String closeDoorTime = "12:40:00";
-       // String closeDoorTime = Class_ET4710_Admin.TimeClosing;
+
+        // so sánh thời gian học sinh đến với thời gian thầy cài đặt đóng cửa nếu mà đến muộn thì background thành màu đỏ
+        // Thời gian đóng cửa là biến static khai báo bên ClassET_4710_admin
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            if(LocalTime.parse(timeStudentArrive).isAfter(LocalTime.parse(closeDoorTime))){ // nếu học sinh đi muộn
+            if(LocalTime.parse(timeStudentArrive).isAfter(LocalTime.parse(Class_ET4710_Admin.ClosingTime))){ // nếu học sinh đi muộn
                holder.layout.setBackgroundColor(Color.RED);
             }
 

@@ -33,7 +33,7 @@
     <string name="text_nhapCodeSinhVien">Hãy nhập code ngày hôm nay để tiến hành điểm danh</string>
     <string name="text_nhapCodeThaygiao">Hãy nhập code xác thực thầy giáo</string>
     <string name="text_listStudent">Danh sách sinh viên</string>
-    <string name="text_soluongSinvien">Số lượng:</string>
+    <string name="text_soluongSinhvien">Số lượng: </string>
     <string name="language_text">Ngôn ngữ</string>
     <string name="manualCode_btn">Tạo code thủ công</string>
     <string name="automaticGenCode_btn">tạo tự động</string>

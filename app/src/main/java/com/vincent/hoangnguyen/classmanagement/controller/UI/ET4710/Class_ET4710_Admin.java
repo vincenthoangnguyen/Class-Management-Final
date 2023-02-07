@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -35,19 +36,23 @@ import java.util.TimerTask;
 
 public class Class_ET4710_Admin extends AppCompatActivity {
     Button setUpDailyCode_btn;
-    Dialog dialog;
+    Dialog dialog,setTimeDialog;
     Button dialog_ok_btn;
     ProgressBar progressBar;
     EditText dialog_dailyCode_edt;
-    EditText dailyCode_textView;
+    TextView dailyCode_textView;
+    TextView closingTime_edt;
     String dailycode_String;
     Timer timerRefreshAdmin;
-    public static String TimeClosing;
+    ProgressBar loadData;
+    public static String ClosingTime; // biến này lưu trữ thời gian đóng cửa được lưu trên Firebase
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_et4710_admin);
         setUpDailyCode_btn = findViewById(R.id.setUp_daily_code_btn);
+        closingTime_edt = findViewById(R.id.timeClosing_edt);
+        loadData = findViewById(R.id.progress_bar_loadCode);
         dailyCode_textView =findViewById(R.id.dailyCode_tv);
 
         dialog = new Dialog(this);
@@ -60,8 +65,10 @@ public class Class_ET4710_Admin extends AppCompatActivity {
             @Override
             public void run() {
                 FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+                // clone DailyCode
                 firestore.collection("Daily code").orderBy("timestamp", Query.Direction.DESCENDING)
                         .limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+
                             @Override
                             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                                 // lấy thành công dữ liệu trên data base
@@ -69,6 +76,27 @@ public class Class_ET4710_Admin extends AppCompatActivity {
                                     dailycode_String = documentSnapshot.getString("DailyCode");
                                     dailyCode_textView.setText("Code buổi học hôm nay là: " + dailycode_String);
                                     dailyCode_textView.setVisibility(View.VISIBLE);
+                                    loadData.setVisibility(View.GONE);
+                                }
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            // nếu lấy dữ liệu thất bại
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                            }
+                        });
+                // clone timeClosing
+                firestore.collection("TimeClosing").orderBy("Timestamp", Query.Direction.DESCENDING)
+                        .limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                            @Override
+                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                // lấy thành công dữ liệu trên data base
+                                for(DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()){
+                                     ClosingTime = documentSnapshot.getString("TimeClosing");
+                                    closingTime_edt.setText("Thời gian đóng cửa là: " + ClosingTime);
+                                    closingTime_edt.setVisibility(View.VISIBLE);
+                                    loadData.setVisibility(View.GONE);
                                 }
                             }
                         })
@@ -182,19 +210,43 @@ public class Class_ET4710_Admin extends AppCompatActivity {
     public void seeInformationStudent(View view) {
         Log.d("Button id_admin", String.valueOf(view.getId()));
     }
+
+    // open listStudent sau khi ấn vào table
     public void openListStudent(View view) {
         startActivity(new Intent(Class_ET4710_Admin.this, ListStudent.class));
     }
     public void setUpTimeClosing(View view) {
-    Dialog setTimeDialog = new Dialog(this);
+    setTimeDialog = new Dialog(this);
     setTimeDialog.setContentView(R.layout.set_closing_time_dialog);
     EditText edt = setTimeDialog.findViewById(R.id.timeClosing_edt);
     Button ok = setTimeDialog.findViewById(R.id.ok_dialog_timeClosing);
+    // set onclick cho button ok
     ok.setOnClickListener(v -> {
-        TimeClosing = edt.getText().toString();
-        Utility.showToast(this,"Thành công");
-        setTimeDialog.dismiss();
+       String TimeClosing = edt.getText().toString();
+       // put timeClosing lên firebase
+            Timestamp timestampSetUp = Timestamp.now();
+            Map <String,Object> TimeClosingMap = new HashMap<>();
+            TimeClosingMap.put("TimeClosing",TimeClosing);
+            TimeClosingMap.put("Timestamp",timestampSetUp);
+            saveTimeClosingToFirebase(TimeClosingMap);
     });
     setTimeDialog.show();
     }
-}
+        // save time closing the door to firebase
+    private void saveTimeClosingToFirebase(Map<String, Object> timeClosingMap) {
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        firestore.collection("TimeClosing").add(timeClosingMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentReference> task) {
+                if(task.isSuccessful()){
+                    Utility.showToast(Class_ET4710_Admin.this,"Thành công");
+                    setTimeDialog.dismiss();
+                }
+                else {
+                    Utility.showToast(Class_ET4710_Admin.this, Objects.requireNonNull(task.getException()).getLocalizedMessage());
+                    setTimeDialog.dismiss();
+                }
+            }
+        });
+    }
+    }

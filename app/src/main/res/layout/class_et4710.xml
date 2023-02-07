@@ -5,16 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="6dp"
+    android:background="@drawable/background"
     tools:context=".controller.UI.ET4710.Class_ET4710">
+
     <TextView
-        android:layout_marginTop="20dp"
         android:id="@+id/Name_class"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:textStyle="bold"
-        android:text="@string/text_SoDoLop"/>
+        android:text="@string/text_SoDoLop"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 
     <TextView
@@ -22,11 +24,12 @@
         android:layout_height="70dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:gravity="top"
         android:background="@drawable/ic_baseline_sensor_door_24"
-        android:textColor="#C81515" />
+        android:gravity="top"
+        android:textColor="#C81515"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/table"
         android:layout_width="70dp"
@@ -35,243 +38,254 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/table" />
 
-    <GridLayout
-       android:paddingStart="12dp"
-        android:layout_marginTop="60dp"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/button03"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:padding="20dp"
         android:layout_height="wrap_content"
-        android:layout_above="@id/table"
-        android:layout_below="@id/Name_class"
-        android:columnCount="6"
-        android:rowCount="5">
+        android:text="Điền Thông Tin"
+        android:onClick="setInformationForStudent"
+        app:cornerRadius="8dp" />
 
-        <Button
-            android:id="@+id/button40"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"
-            android:layout_marginRight="5dp"
-            android:onClick="setInformationForStudent"
-            app:cornerRadius="8dp" />
+    <!--    <GridLayout-->
+    <!--       android:paddingStart="12dp"-->
+    <!--        android:layout_marginTop="60dp"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_above="@id/table"-->
+    <!--        android:layout_below="@id/Name_class"-->
+    <!--        android:columnCount="6"-->
+    <!--        android:rowCount="5">-->
 
-        <Button
-            app:cornerRadius="8dp"
-            android:id="@+id/button41"
-            android:text="N10"
-            android:textSize="10sp"
-            android:onClick="setInformationForStudent"
-            android:layout_marginRight="5dp"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"
-            />
+    <!--        <Button-->
+    <!--            android:id="@+id/button40"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"-->
+    <!--            android:layout_marginRight="5dp"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            app:cornerRadius="8dp" />-->
 
-        <Button
-            android:layout_marginRight="10dp"
-            android:id="@+id/button42"
-            android:onClick="setInformationForStudent"
-            android:layout_marginBottom="30dp"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"
-            app:cornerRadius="8dp" />
+    <!--        <Button-->
+    <!--            app:cornerRadius="8dp"-->
+    <!--            android:id="@+id/button41"-->
+    <!--            android:text="N10"-->
+    <!--            android:textSize="10sp"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_marginRight="5dp"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"-->
+    <!--            />-->
 
-        <Button
-            android:id="@+id/button43"
-            android:onClick="setInformationForStudent"
-            android:layout_marginRight="5dp"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"
-            app:cornerRadius="8dp" />
+    <!--        <Button-->
+    <!--            android:layout_marginRight="10dp"-->
+    <!--            android:id="@+id/button42"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_marginBottom="30dp"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"-->
+    <!--            app:cornerRadius="8dp" />-->
 
-        <Button
-            android:id="@+id/button44"
-            android:text="N9"
-            android:onClick="setInformationForStudent"
-            android:layout_marginRight="5dp"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"
-            app:cornerRadius="8dp"/>
+    <!--        <Button-->
+    <!--            android:id="@+id/button43"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_marginRight="5dp"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"-->
+    <!--            app:cornerRadius="8dp" />-->
 
-        <Button
-            android:id="@+id/button45"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"
-            app:cornerRadius="8dp" />
+    <!--        <Button-->
+    <!--            android:id="@+id/button44"-->
+    <!--            android:text="N9"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_marginRight="5dp"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"-->
+    <!--            app:cornerRadius="8dp"/>-->
 
-        <Button
-            app:cornerRadius="8dp"
-            android:id="@+id/button30"
-            android:onClick="setInformationForStudent"
-            android:layout_marginBottom="30dp"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"
-             />
+    <!--        <Button-->
+    <!--            android:id="@+id/button45"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"-->
+    <!--            app:cornerRadius="8dp" />-->
 
-        <Button
-            app:cornerRadius="8dp"
-            android:id="@+id/button31"
-            android:text="N8"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"
-            />
+    <!--        <Button-->
+    <!--            app:cornerRadius="8dp"-->
+    <!--            android:id="@+id/button30"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_marginBottom="30dp"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"-->
+    <!--             />-->
 
-        <Button
+    <!--        <Button-->
+    <!--            app:cornerRadius="8dp"-->
+    <!--            android:id="@+id/button31"-->
+    <!--            android:text="N8"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"-->
+    <!--            />-->
 
-            android:id="@+id/button32"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"
-            app:cornerRadius="8dp"/>
+    <!--        <Button-->
 
-        <Button
-            app:cornerRadius="8dp"
-            android:id="@+id/button33"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table" />
+    <!--            android:id="@+id/button32"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"-->
+    <!--            app:cornerRadius="8dp"/>-->
 
-        <Button
-            app:cornerRadius="8dp"
-            android:id="@+id/button34"
-            android:text="N7"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"
-            />
+    <!--        <Button-->
+    <!--            app:cornerRadius="8dp"-->
+    <!--            android:id="@+id/button33"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table" />-->
 
-        <Button
-            app:cornerRadius="8dp"
-            android:id="@+id/button35"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"/>
-        <Button
-            android:id="@+id/button20"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"
-            android:layout_marginBottom="30dp"
-            app:cornerRadius="8dp"/>
-        <Button
-            android:id="@+id/button21"
-            android:text="N6"
-            app:cornerRadius="8dp"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table" />
+    <!--        <Button-->
+    <!--            app:cornerRadius="8dp"-->
+    <!--            android:id="@+id/button34"-->
+    <!--            android:text="N7"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"-->
+    <!--            />-->
 
-        <Button
-            android:id="@+id/button2"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"
-            app:cornerRadius="8dp" />
+    <!--        <Button-->
+    <!--            app:cornerRadius="8dp"-->
+    <!--            android:id="@+id/button35"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"/>-->
+    <!--        <Button-->
+    <!--            android:id="@+id/button20"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"-->
+    <!--            android:layout_marginBottom="30dp"-->
+    <!--            app:cornerRadius="8dp"/>-->
+    <!--        <Button-->
+    <!--            android:id="@+id/button21"-->
+    <!--            android:text="N6"-->
+    <!--            app:cornerRadius="8dp"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table" />-->
 
-        <Button
-            android:id="@+id/button23"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"
-            app:cornerRadius="8dp" />
+    <!--        <Button-->
+    <!--            android:id="@+id/button2"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"-->
+    <!--            app:cornerRadius="8dp" />-->
 
-        <Button
-            app:cornerRadius="8dp"
-            android:id="@+id/button24"
-            android:text="N5"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"
-            />
+    <!--        <Button-->
+    <!--            android:id="@+id/button23"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"-->
+    <!--            app:cornerRadius="8dp" />-->
 
-        <Button
-            android:id="@+id/button25"
-            app:cornerRadius="8dp"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table" />
+    <!--        <Button-->
+    <!--            app:cornerRadius="8dp"-->
+    <!--            android:id="@+id/button24"-->
+    <!--            android:text="N5"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"-->
+    <!--            />-->
 
-        <Button
-            android:id="@+id/button10"
-            android:layout_marginBottom="30dp"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"
-            app:cornerRadius="8dp"/>
+    <!--        <Button-->
+    <!--            android:id="@+id/button25"-->
+    <!--            app:cornerRadius="8dp"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table" />-->
 
-        <Button
-            android:id="@+id/button11"
-            android:text="N4"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"
-            app:cornerRadius="8dp"/>
+    <!--        <Button-->
+    <!--            android:id="@+id/button10"-->
+    <!--            android:layout_marginBottom="30dp"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"-->
+    <!--            app:cornerRadius="8dp"/>-->
 
-        <Button
-            android:id="@+id/button12"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"/>
-        <Button
-            android:id="@+id/button13"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"/>
-        <Button
-            app:cornerRadius="8dp"
-            android:id="@+id/button14"
-            android:text="N3"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"
-/>
-        <Button
-            android:id="@+id/button15"
-            app:cornerRadius="8dp"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"/>
-        <Button
-            android:id="@+id/button00"
-            app:cornerRadius="8dp"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"/>
-        <Button
-            android:id="@+id/button01"
-            android:text="N2"
-            app:cornerRadius="8dp"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table" />
+    <!--        <Button-->
+    <!--            android:id="@+id/button11"-->
+    <!--            android:text="N4"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"-->
+    <!--            app:cornerRadius="8dp"/>-->
 
-        <Button
-            app:cornerRadius="8dp"
-            android:id="@+id/button02"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table" />
+    <!--        <Button-->
+    <!--            android:id="@+id/button12"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"/>-->
+    <!--        <Button-->
+    <!--            android:id="@+id/button13"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"/>-->
+    <!--        <Button-->
+    <!--            app:cornerRadius="8dp"-->
+    <!--            android:id="@+id/button14"-->
+    <!--            android:text="N3"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"-->
+    <!--/>-->
+    <!--        <Button-->
+    <!--            android:id="@+id/button15"-->
+    <!--            app:cornerRadius="8dp"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"/>-->
+    <!--        <Button-->
+    <!--            android:id="@+id/button00"-->
+    <!--            app:cornerRadius="8dp"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"/>-->
+    <!--        <Button-->
+    <!--            android:id="@+id/button01"-->
+    <!--            android:text="N2"-->
+    <!--            app:cornerRadius="8dp"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table" />-->
 
-        <Button
-            android:id="@+id/button03"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"
-            app:cornerRadius="8dp"
-            android:onClick="setInformationForStudent"
-            />
+    <!--        <Button-->
+    <!--            app:cornerRadius="8dp"-->
+    <!--            android:id="@+id/button02"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table" />-->
 
-        <Button
-            android:text="N1"
-            android:id="@+id/button04"
-            android:layout_width="@dimen/height_table"
-            android:onClick="setInformationForStudent"
-            android:layout_height="@dimen/height_table"
-            app:cornerRadius="8dp"/>
-        <Button
-            android:id="@+id/button05"
-            android:onClick="setInformationForStudent"
-            android:layout_width="@dimen/height_table"
-            android:layout_height="@dimen/height_table"
-            app:cornerRadius="8dp"/>
+    <!--        <Button-->
+    <!--            android:id="@+id/button03"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"-->
+    <!--            app:cornerRadius="8dp"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            />-->
 
-    </GridLayout>
+    <!--        <Button-->
+    <!--            android:text="N1"-->
+    <!--            android:id="@+id/button04"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_height="@dimen/height_table"-->
+    <!--            app:cornerRadius="8dp"/>-->
+    <!--        <Button-->
+    <!--            android:id="@+id/button05"-->
+    <!--            android:onClick="setInformationForStudent"-->
+    <!--            android:layout_width="@dimen/height_table"-->
+    <!--            android:layout_height="@dimen/height_table"-->
+    <!--            app:cornerRadius="8dp"/>-->
+
+    <!--    </GridLayout>-->
 </RelativeLayout>
