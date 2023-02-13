@@ -60,4 +60,15 @@
     <string name="title_no">Không</string>
     <string name="title_yes">Có</string>
     <string name="toast_saveSuccessful">Lưu thành công</string>
+    <string name="title_activity_class_et4710_test">ClassET4710_test</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Information</string>
+    <string name="menu_slideshow">Slideshow</string>
 </resources>

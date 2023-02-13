@@ -87,7 +87,7 @@ public class ListStudent extends AppCompatActivity {
         informationAdapter.stopListening();
     }
     private void getNumberOfStudent(){
-        db.collection("ET4710_information").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("ListStudent").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {

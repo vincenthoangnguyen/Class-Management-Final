@@ -25,8 +25,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.vincent.hoangnguyen.classmanagement.controller.UI.ET4710.ClassET4710;
 import com.vincent.hoangnguyen.classmanagement.R;
-import com.vincent.hoangnguyen.classmanagement.controller.UI.ET4710.Class_ET4710;
 import com.vincent.hoangnguyen.classmanagement.controller.UI.ET4710.Class_ET4710_Admin;
 import com.vincent.hoangnguyen.classmanagement.controller.UI.loginAndCreate.LoginActivity;
 import com.vincent.hoangnguyen.classmanagement.model.Utility;
@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                                         }
                                         if (code.equals(dailyCode)) {
                                             Utility.showToast(MainActivity.this, getString(R.string.toast_welcomeToClass));
-                                            startActivity(new Intent(MainActivity.this, Class_ET4710.class));
+                                            startActivity(new Intent(MainActivity.this, ClassET4710.class));
                                         } else {
                                             Utility.showToast(MainActivity.this, getString(R.string.toast_dailyCodeIncorrect));
                                         }

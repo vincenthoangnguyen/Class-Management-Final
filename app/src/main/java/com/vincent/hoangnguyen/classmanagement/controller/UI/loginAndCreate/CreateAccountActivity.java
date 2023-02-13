@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -17,9 +18,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.vincent.hoangnguyen.classmanagement.R;
+import com.vincent.hoangnguyen.classmanagement.model.DetailInformationActivity;
 import com.vincent.hoangnguyen.classmanagement.model.Student;
 import com.vincent.hoangnguyen.classmanagement.model.Utility;
 
@@ -30,6 +34,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     private Button createAccountBtn;
     private ProgressBar progressBar;
     private TextView loginBtnTextView;
+    Student user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +55,14 @@ public class CreateAccountActivity extends AppCompatActivity {
         String userName = name_EditText.getText().toString().trim();
         String id = id_EditText.getText().toString().trim();
         String phoneNumber = phoneNumber_EditText.getText().toString().trim();
+        // Sau khi tạo tài khoản thành công thì bắt đầu lấy các thông tin của người dùng đó và lưu lên firebase
+        // khởi tạo Object student để sẵn sàng lưu thông tin sinh viên lên firebase
+        user = new Student();
+        user.setTimestamp(Timestamp.now());
+        user.setPhoneNumber(phoneNumber);
+        user.setId(id_EditText.getText().toString().trim());
+        user.setName(name_EditText.getText().toString().trim());
+        user.setEmail(emailEditText.getText().toString().trim());
 
         boolean isValidated = validateData(email,password,confirm_password,userName,id,phoneNumber);
         if(!isValidated){  // nếu xác thực là false thì nhập lại nếu đúng thì đi tiếp
@@ -57,6 +70,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         }
         // nếu mà isValidated đúng thì gọi tiếp phương thức tạo account trên firebase
         createAccountInFireBase(email,password);
+
     }
 
     private void createAccountInFireBase(String email, String password) {
@@ -68,42 +82,34 @@ public class CreateAccountActivity extends AppCompatActivity {
         firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(CreateAccountActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-
                 if(task.isSuccessful()){
                     // done
-
                     Objects.requireNonNull(firebaseAuth.getCurrentUser()).sendEmailVerification();
                     firebaseAuth.signOut();  // signOut account  người dùng phải verify email mới đăng nhập lại đc
-                    // Sau khi tạo tài khoản thành công thì bắt đầu lấy các thông tin của người dùng đó và lưu lên firebase
-                    // khởi tạo Object student để sẵn sàng lưu thông tin sinh viên lên firebase
-                    Student user = new Student();
-                    user.setTimestamp(Timestamp.now());
-                    user.setPhoneNumber(phoneNumber_EditText.getText().toString().trim());
-                    user.setId(id_EditText.getText().toString().trim());
-                    user.setName(name_EditText.getText().toString().trim());
-                    user.setEmail(emailEditText.getText().toString().trim());
-                    saveInforStudentToList(user);
-
+                    saveInformationStudentToList(user);;
+                    Utility.showToast(CreateAccountActivity.this,getString(R.string.toast_CreateAccountSuccess));
                     finish();  // tắt màn hình hiện tại chuyển đến màn hình login
                 }
                 else {
                     //failure
                     Utility.showToast(CreateAccountActivity.this, task.getException().getLocalizedMessage());
                     // getLocalizedMessage để nhận lí do tại sao tài khoản ko đc tạo
+                    changInProgress(false);
                 }
             }
         });
 
     }
 
-    private void saveInforStudentToList(Student user) {
+
+    private void saveInformationStudentToList(Student user) {
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         firestore.collection("ListStudent").add(user).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
                 changInProgress(false);
                 if(task.isSuccessful()){
-                    Utility.showToast(CreateAccountActivity.this, getString(R.string.toast_CreateAccountSuccess));
+
                 }
             }
         });
@@ -150,7 +156,21 @@ public class CreateAccountActivity extends AppCompatActivity {
         }
         return true;
     }
+    public void deleteInformationOnFirebase(){
+        DocumentReference documentReference;
+        documentReference = Utility.getCollectionReferenceForStudent().document(DetailInformationActivity.docId);
+        documentReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    finish();
+                }else {
+                    Log.d("hoangdz",Objects.requireNonNull(task.getException()).getLocalizedMessage());
+                }
 
+            }
+        });
+    }
     private void mapping() {
         emailEditText = findViewById(R.id.signIn_email);
         passwordEditText = findViewById(R.id.signIn_password);

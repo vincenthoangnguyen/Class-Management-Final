@@ -27,5 +27,5 @@
         android:visibility="gone"
         android:layout_width="70dp"
         android:layout_height="50dp"
-        android:layout_below="@id/save_btn"/>
+        android:layout_below="@id/ok_dialog_timeClosing"/>
 </LinearLayout>
