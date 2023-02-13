@@ -20,6 +20,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -67,6 +69,7 @@ public class InformationAdapter extends FirestoreRecyclerAdapter<Student,Informa
                 intent.putExtra("Name",student.getName());
                 intent.putExtra("Id",student.getId());
                 intent.putExtra("PhoneNumber",student.getPhoneNumber());
+                intent.putExtra("Email",student.getEmail());
                 String docID = this.getSnapshots().getSnapshot(position).getId();
                 intent.putExtra("docID", docID);
                 context.startActivity(intent);

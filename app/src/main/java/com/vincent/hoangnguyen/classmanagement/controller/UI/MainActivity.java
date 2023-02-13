@@ -2,8 +2,10 @@ package com.vincent.hoangnguyen.classmanagement.controller.UI;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        loadLanguage();
         menu_btn = findViewById(R.id.menu_btn);
         menu_btn.setOnClickListener(v -> showMenu());
     }
@@ -64,13 +67,11 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                 }
                 if(item.getTitle() == "English"){
-                    setLocale("en");
-                    currentLanguage = "en";
+                   setLanguage("English");
                     recreate();
                 }
                 if(item.getTitle() == "Tiếng Việt"){
-                    setLocale("vi");
-                    currentLanguage = "vi";
+                    setLanguage("Vietnamese");
                     recreate();
                 }
 
@@ -78,7 +79,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    private void loadLanguage() {
+        Log.d("LANGUAGE","Called");
+        SharedPreferences preferences = getSharedPreferences("LanguagePref", MODE_PRIVATE);
+        String language = preferences.getString("Language", "English");
+        Log.d("LANGUAGE",language);
+        setLanguage(language);
+        // dùng setContentView để có thể recreate lại activity mà ko tạo ra vòng lặp vô hạn khi dùng recreate
+        setContentView(R.layout.activity_main);
+    }
+    private void setLanguage(String language) {
+        // Save the selected language using SharedPreferences
+        SharedPreferences preferences = getSharedPreferences("LanguagePref", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("Language", language);
+        editor.apply();
+        // Update the app to reflect the selected language
+        if(language.equals("English")) {
+            currentLanguage = "en";
+            setLocale(currentLanguage);
+        }
+        if (language.equals("Vietnamese")){
+            currentLanguage = "vi";
+            setLocale(currentLanguage);
+        }
 
+    }
     public void goToET4710(View view) {
         Dialog dialog = new Dialog(MainActivity.this);
         dialog.setTitle("Hộp thoại xử lý");
@@ -120,10 +146,10 @@ public class MainActivity extends AppCompatActivity {
 
             //if (code.equals("0934660554")) {
             if(code.equals("123")){
-                Utility.showToast(MainActivity.this, "Chào Mừng Thầy Tuấn");
+                Utility.showToast(MainActivity.this, getString(R.string.toast_welcomeTeacher));
                 startActivity(new Intent(MainActivity.this, Class_ET4710_Admin.class));
             } else {
-                Utility.showToast(MainActivity.this, "Bạn không phải thầy Tuấn");
+                Utility.showToast(MainActivity.this, getString(R.string.toast_youAreNotTeacher));
             }
         });
         // đọc dữ liệu trên firebase ở đây là đọc daily code được thây cài đặt
@@ -152,10 +178,10 @@ public class MainActivity extends AppCompatActivity {
                                             return;
                                         }
                                         if (code.equals(dailyCode)) {
-                                            Utility.showToast(MainActivity.this, "Chào Mừng Đến với lớp học");
+                                            Utility.showToast(MainActivity.this, getString(R.string.toast_welcomeToClass));
                                             startActivity(new Intent(MainActivity.this, Class_ET4710.class));
                                         } else {
-                                            Utility.showToast(MainActivity.this, "Sai daily code vui lòng nhập lại");
+                                            Utility.showToast(MainActivity.this, getString(R.string.toast_dailyCodeIncorrect));
                                         }
                                     });
                                 }
@@ -165,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
                             // nếu lấy dữ liệu thất bạt
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Utility.showToast(MainActivity.this, "Lỗi trong quá trình lấy code hàng buổi");
+                                Utility.showToast(MainActivity.this, getString(R.string.toast_bugInTakeDailycode));
                             }
                         });
             }
@@ -180,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
     boolean validateData(String code, EditText editText) {
 
         if (code == null || code.isEmpty()) {
-            editText.setError("Bắt buộc");
+            editText.setError(getString(R.string.Error_compulsory));
             return false;
         }
         return true;

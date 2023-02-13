@@ -40,4 +40,24 @@
     <string name="dailycode_text">Code hôm nay là:</string>
     <string name="logout">Đăng xuất</string>
     <string name="setUpTimeCloseDoor_btn">Cài đặt giờ đóng cửa</string>
+    <string name="success_message">Thành công</string>
+    <string name="toast_setUpSucssesful">Cài đặt thành công code cho buổi học ngày hôm nay!</string>
+    <string name="toast_todayCodeIs">Code buổi học hôm nay là:</string>
+    <string name="toast_ClosingTimeIS">Thời gian đóng cửa là: </string>
+    <string name="toast_CreateAccountSuccess">Tạo thành công, check email để xác thực tài khoản</string>
+    <string name="Error_Email">Email không hợp lệ</string>
+    <string name="Error_lengthPassword">Độ dài của mật khẩu phải >6</string>
+    <string name="Error_passwordNotMatch">Mật khẩu không khớp nhau</string>
+    <string name="Error_compulsory">Bắt buộc</string>
+    <string name="toast_EmailNotVerify">Email chưa được xác thực làm ơn check email để xác thực</string>
+    <string name="toast_welcomeTeacher">Chào Mừng Thầy Tuấn</string>
+    <string name="toast_youAreNotTeacher">Bạn không phải thầy Tuấn</string>
+    <string name="toast_welcomeToClass">Chào Mừng Đến với lớp học</string>
+    <string name="toast_dailyCodeIncorrect">Sai daily code vui lòng nhập lại</string>
+    <string name="toast_bugInTakeDailycode">Lỗi trong quá trình lấy code hàng buổi</string>
+    <string name="title_Notification">Thông Báo!</string>
+    <string name="title_QuestionBeforeDelete">Bạn có muốn xóa hồ sơ sinh viên này không ?</string>
+    <string name="title_no">Không</string>
+    <string name="title_yes">Có</string>
+    <string name="toast_saveSuccessful">Lưu thành công</string>
 </resources>

@@ -19,7 +19,8 @@ public class Utility {
         // khởi tạo người dùng để lấy id
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         assert currentUser != null;
-        return FirebaseFirestore.getInstance().collection("ET4710_information");
+       //return FirebaseFirestore.getInstance().collection("ET4710_information");
+        return FirebaseFirestore.getInstance().collection("ListStudent");
     }
     // tạo  hàm chuyển timestamp sang String
     public static String timeStampToString(Timestamp timestamp){

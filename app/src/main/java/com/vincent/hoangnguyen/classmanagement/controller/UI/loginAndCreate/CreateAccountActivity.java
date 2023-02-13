@@ -14,13 +14,19 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.vincent.hoangnguyen.classmanagement.R;
+import com.vincent.hoangnguyen.classmanagement.model.Student;
 import com.vincent.hoangnguyen.classmanagement.model.Utility;
 
+import java.util.Objects;
+
 public class CreateAccountActivity extends AppCompatActivity {
-    private EditText emailEditText, passwordEditText,confirmPasswordEditText;
+    private EditText emailEditText, passwordEditText,confirmPasswordEditText,name_EditText,id_EditText,phoneNumber_EditText;
     private Button createAccountBtn;
     private ProgressBar progressBar;
     private TextView loginBtnTextView;
@@ -41,7 +47,11 @@ public class CreateAccountActivity extends AppCompatActivity {
         String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
         String confirm_password = confirmPasswordEditText.getText().toString().trim();
-        boolean isValidated = validateData(email,password,confirm_password);
+        String userName = name_EditText.getText().toString().trim();
+        String id = id_EditText.getText().toString().trim();
+        String phoneNumber = phoneNumber_EditText.getText().toString().trim();
+
+        boolean isValidated = validateData(email,password,confirm_password,userName,id,phoneNumber);
         if(!isValidated){  // nếu xác thực là false thì nhập lại nếu đúng thì đi tiếp
             return;
         }
@@ -58,12 +68,22 @@ public class CreateAccountActivity extends AppCompatActivity {
         firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(CreateAccountActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                changInProgress(false);
+
                 if(task.isSuccessful()){
                     // done
-                    Utility.showToast(CreateAccountActivity.this, "Tạo thành công, check email để xác thực tài khoản (Vào mục thư rác:((..)");
-                    firebaseAuth.getCurrentUser().sendEmailVerification();
+
+                    Objects.requireNonNull(firebaseAuth.getCurrentUser()).sendEmailVerification();
                     firebaseAuth.signOut();  // signOut account  người dùng phải verify email mới đăng nhập lại đc
+                    // Sau khi tạo tài khoản thành công thì bắt đầu lấy các thông tin của người dùng đó và lưu lên firebase
+                    // khởi tạo Object student để sẵn sàng lưu thông tin sinh viên lên firebase
+                    Student user = new Student();
+                    user.setTimestamp(Timestamp.now());
+                    user.setPhoneNumber(phoneNumber_EditText.getText().toString().trim());
+                    user.setId(id_EditText.getText().toString().trim());
+                    user.setName(name_EditText.getText().toString().trim());
+                    user.setEmail(emailEditText.getText().toString().trim());
+                    saveInforStudentToList(user);
+
                     finish();  // tắt màn hình hiện tại chuyển đến màn hình login
                 }
                 else {
@@ -74,6 +94,19 @@ public class CreateAccountActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void saveInforStudentToList(Student user) {
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        firestore.collection("ListStudent").add(user).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentReference> task) {
+                changInProgress(false);
+                if(task.isSuccessful()){
+                    Utility.showToast(CreateAccountActivity.this, getString(R.string.toast_CreateAccountSuccess));
+                }
+            }
+        });
     }
 
 
@@ -88,18 +121,31 @@ public class CreateAccountActivity extends AppCompatActivity {
         }
     }
 
-    private boolean validateData(String email, String password, String confirmPassword){
+    private boolean validateData(String email, String password, String confirmPassword, String name,String id,String phoneNumber){
         // validate the data that are input by user
         if( ! Patterns.EMAIL_ADDRESS.matcher(email).matches()){  // if the email invalid
-            emailEditText.setError("Email không hợp lệ");
+            emailEditText.setError(getString(R.string.Error_Email));
             return false;
         }
         if (password.length() < 6){
-            passwordEditText.setError("Độ dài của mật khẩu phải >6");
+            passwordEditText.setError(getString(R.string.Error_lengthPassword));
             return false;
         }
         if(! confirmPassword.equals(password)){  // 2 password don't match
-            confirmPasswordEditText.setError("Mật khẩu không khớp nhau");
+            confirmPasswordEditText.setError(getString(R.string.Error_passwordNotMatch));
+            return false;
+        }
+        if (name.isEmpty()) {
+            name_EditText.setError(getString(R.string.Error_compulsory));
+            return false;
+        }
+
+        if (id.isEmpty()) {
+            id_EditText.setError(getString(R.string.Error_compulsory));
+            return false;
+        }
+        if (phoneNumber.isEmpty()) {
+            phoneNumber_EditText.setError(getString(R.string.Error_compulsory));
             return false;
         }
         return true;
@@ -112,5 +158,8 @@ public class CreateAccountActivity extends AppCompatActivity {
         createAccountBtn = findViewById(R.id.create_account_btn);
         progressBar = findViewById(R.id.signIn_progress_bar);
         loginBtnTextView = findViewById(R.id.login_Text_view_btn);
+        name_EditText = findViewById(R.id.signIn_FullName);
+        id_EditText = findViewById(R.id.signIn_id);
+        phoneNumber_EditText = findViewById(R.id.signIn_PhoneNumber);
     }
 }

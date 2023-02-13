@@ -61,7 +61,7 @@ public class InformationStudentActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<DocumentReference> task) {
                 changInLoginProgress(false);
                 if(task.isSuccessful()){
-                    Utility.showToast(InformationStudentActivity.this,"Lưu thành công");
+                    Utility.showToast(InformationStudentActivity.this,getString(R.string.toast_saveSuccessful));
                     Intent intent = new Intent();
                     boolean clicked = true;
                     intent.putExtra("Clicked",clicked);
@@ -81,15 +81,15 @@ public class InformationStudentActivity extends AppCompatActivity {
     boolean validateData(String name, String id, String k){
 
         if(name == null || name.isEmpty()){
-            nameEdt.setError("Bắt buộc");
+            nameEdt.setError(getString(R.string.Error_compulsory));
             return false;
         }
         if(id == null || id.isEmpty()){
-            idEdt.setError("Bắt buộc");
+            idEdt.setError(getString(R.string.Error_compulsory));
             return false;
         }
         if(k == null || k.isEmpty()){
-            phoneNumberEdt.setError("Bắt buộc");
+            phoneNumberEdt.setError(getString(R.string.Error_compulsory));
             return false;
         }
         return true;

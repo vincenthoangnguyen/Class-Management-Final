@@ -39,4 +39,24 @@
     <string name="dailycode_text">Today\'s code is:</string>
     <string name="logout">Logout</string>
     <string name="setUpTimeCloseDoor_btn">Set closing time</string>
+    <string name="success_message">Successfully</string>
+    <string name="toast_setUpSucssesful">Successfully installed the code for today\'s lesson!</string>
+    <string name="toast_todayCodeIs">The code for today\' lesson is:</string>
+    <string name="toast_ClosingTimeIS">Time closing is: </string>
+    <string name="toast_CreateAccountSuccess">Successfully created an account, check your email to verify your account</string>
+    <string name="Error_Email">Invalid email</string>
+    <string name="Error_lengthPassword">The length of the password must be >6</string>
+    <string name="Error_passwordNotMatch">Two passwords do not match</string>
+    <string name="Error_compulsory">Compulsory</string>
+    <string name="toast_EmailNotVerify">Email is not verified, please check your email for verification</string>
+    <string name="toast_welcomeTeacher">Welcome Mr. Tuan</string>
+    <string name="toast_youAreNotTeacher">You are not Mr. Tuan</string>
+    <string name="toast_welcomeToClass">Welcome to the classroom</string>
+    <string name="toast_dailyCodeIncorrect">Wrong daily code please re-enter</string>
+    <string name="toast_bugInTakeDailycode">Error in the process of getting the code every day</string>
+    <string name="title_Notification">Notification!</string>
+    <string name="title_QuestionBeforeDelete">Do you want to delete this student record?</string>
+    <string name="title_no">No</string>
+    <string name="title_yes">Yes</string>
+    <string name="toast_saveSuccessful">Save successfully</string>
 </resources>

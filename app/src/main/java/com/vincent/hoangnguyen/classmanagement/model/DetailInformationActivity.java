@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.vincent.hoangnguyen.classmanagement.ListStudent.SendMessageActivity;
@@ -15,9 +16,10 @@ import com.vincent.hoangnguyen.classmanagement.R;
 
 public class DetailInformationActivity extends AppCompatActivity {
     TextView nameTv,idTv,phoneNumberTv;
-    String name,id,phoneNumber;
+    String name,id,phoneNumber,email;
     static String docId;
     TextView deleteTv;
+    TextView email_Tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,25 +29,28 @@ public class DetailInformationActivity extends AppCompatActivity {
         idTv =findViewById(R.id.detail_mssv);
         phoneNumberTv = findViewById(R.id.detail_sdt);
         deleteTv =findViewById(R.id.detail_delete_tv);
+        email_Tv = findViewById(R.id.detail_email);
         deleteTv.setOnClickListener(view -> deleteInformation());
         //receive data từ information adapter
         name = getIntent().getStringExtra("Name");
         id = getIntent().getStringExtra("Id");
         phoneNumber = getIntent().getStringExtra("PhoneNumber");
+        email = getIntent().getStringExtra("Email");
         docId = getIntent().getStringExtra("docID");
+
         // set data
         nameTv.setText(name);
         idTv.setText(id);
         phoneNumberTv.setText(phoneNumber);
-
+        email_Tv.setText(email);
     }
 
     private void deleteInformation() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-        alertDialog.setTitle("Thông Báo!");
+        alertDialog.setTitle(R.string.title_Notification);
         alertDialog.setIcon(R.mipmap.ic_launcher);
-        alertDialog.setMessage("Bạn có muốn xóa hồ sơ sinh viên này không ?");
-        alertDialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+        alertDialog.setMessage(R.string.title_QuestionBeforeDelete);
+        alertDialog.setPositiveButton(R.string.title_yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 InformationStudentActivity informationStudentActivity = new InformationStudentActivity();
@@ -53,7 +58,7 @@ public class DetailInformationActivity extends AppCompatActivity {
                 finish();
             }
         });
-        alertDialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+        alertDialog.setNegativeButton(R.string.title_no, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 

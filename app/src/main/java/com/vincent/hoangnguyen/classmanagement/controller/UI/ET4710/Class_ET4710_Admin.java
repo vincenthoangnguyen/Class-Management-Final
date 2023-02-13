@@ -74,7 +74,7 @@ public class Class_ET4710_Admin extends AppCompatActivity {
                                 // lấy thành công dữ liệu trên data base
                                 for(DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()){
                                     dailycode_String = documentSnapshot.getString("DailyCode");
-                                    dailyCode_textView.setText("Code buổi học hôm nay là: " + dailycode_String);
+                                    dailyCode_textView.setText(getString(R.string.toast_todayCodeIs)+" " + dailycode_String);
                                     dailyCode_textView.setVisibility(View.VISIBLE);
                                     loadData.setVisibility(View.GONE);
                                 }
@@ -94,7 +94,7 @@ public class Class_ET4710_Admin extends AppCompatActivity {
                                 // lấy thành công dữ liệu trên data base
                                 for(DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()){
                                      ClosingTime = documentSnapshot.getString("TimeClosing");
-                                    closingTime_edt.setText("Thời gian đóng cửa là: " + ClosingTime);
+                                    closingTime_edt.setText(getString(R.string.toast_ClosingTimeIS) +" "+ ClosingTime);
                                     closingTime_edt.setVisibility(View.VISIBLE);
                                     loadData.setVisibility(View.GONE);
                                 }
@@ -118,7 +118,7 @@ public class Class_ET4710_Admin extends AppCompatActivity {
                            // lấy thành công dữ liệu trên data base
                            for(DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()){
                               dailycode_String = documentSnapshot.getString("DailyCode");
-                               dailyCode_textView.setText("Code buổi học hôm nay là: " + dailycode_String);
+                               dailyCode_textView.setText(getString(R.string.toast_todayCodeIs)+" " + dailycode_String);
                                dailyCode_textView.setVisibility(View.VISIBLE);
                            }
                        }
@@ -160,9 +160,9 @@ public class Class_ET4710_Admin extends AppCompatActivity {
             public void onComplete(@NonNull Task<DocumentReference> task) {
                 changInLoginProgress(false);
                 if(task.isSuccessful()){
-                    Utility.showToast(Class_ET4710_Admin.this,"Cài đặt thành công code cho buổi học ngày hôm nay!");
+                    Utility.showToast(Class_ET4710_Admin.this,getString(R.string.toast_setUpSucssesful));
                     dailycode_String = Objects.requireNonNull(dailyCode.get("DailyCode")).toString();
-                    dailyCode_textView.setText("Code buổi học hôm nay là:" + dailycode_String);
+                    dailyCode_textView.setText(getString(R.string.toast_todayCodeIs)+" " + dailycode_String);
                     dailyCode_textView.setVisibility(View.VISIBLE);
                     // nếu lưu thành công thì dùng phương thước dissmiss để không hiển thị
                     dialog.dismiss();
@@ -239,7 +239,7 @@ public class Class_ET4710_Admin extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
                 if(task.isSuccessful()){
-                    Utility.showToast(Class_ET4710_Admin.this,"Thành công");
+                    Utility.showToast(Class_ET4710_Admin.this,getString(R.string.success_message));
                     setTimeDialog.dismiss();
                 }
                 else {

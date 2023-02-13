@@ -6,9 +6,18 @@ public class Student {
     private String name;
     private String id;
     private String phoneNumber;
+    private String email;
     private com.google.firebase.Timestamp timestamp;
 
     public Student() {
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Timestamp getTimestamp() {
