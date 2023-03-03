@@ -26,7 +26,7 @@
     <string name="chooseSubject_main_text">Chọn lớp học</string>
     <string name="mobile_nameSubject">Lập trình moblie</string>
     <string name="nameSubject_ComputerNetwork">Mạng máy tính</string>
-    <string name="text_SoDoLop">Sơ đồ lớp Lập trình ứng dụng di động ET4710 -137364</string>
+    <string name="text_SoDoLop">Nhấn nút CheckIn để tiến hành điểm danh</string>
     <string name="text_OptionLogin">Chọn chế độ người dùng</string>
     <string name="text_student">Sinh viên</string>
     <string name="text_Teacher">Thầy</string>
@@ -53,7 +53,7 @@
     <string name="toast_welcomeTeacher">Chào Mừng Thầy Tuấn</string>
     <string name="toast_youAreNotTeacher">Bạn không phải thầy Tuấn</string>
     <string name="toast_welcomeToClass">Chào Mừng Đến với lớp học</string>
-    <string name="toast_dailyCodeIncorrect">Sai daily code vui lòng nhập lại</string>
+    <string name="toast_dailyCodeIncorrect">Sai code vui lòng nhập lại</string>
     <string name="toast_bugInTakeDailycode">Lỗi trong quá trình lấy code hàng buổi</string>
     <string name="title_Notification">Thông Báo!</string>
     <string name="title_QuestionBeforeDelete">Bạn có muốn xóa hồ sơ sinh viên này không ?</string>
@@ -67,8 +67,9 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Information</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_home">Trang chủ</string>
+    <string name="menu_gallery">Thông tin</string>
+    <string name="text_fullname">Họ và tên</string>
+    <string name="student_id_tv">Mã số sinh viên</string>
+    <string name="phone_number_Tv">Số điện thoại</string>
 </resources>

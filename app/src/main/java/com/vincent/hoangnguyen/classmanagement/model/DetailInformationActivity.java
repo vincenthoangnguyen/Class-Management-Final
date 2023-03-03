@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.vincent.hoangnguyen.classmanagement.R;
@@ -15,10 +17,12 @@ import com.vincent.hoangnguyen.classmanagement.controller.UI.loginAndCreate.Crea
 
 public class DetailInformationActivity extends AppCompatActivity {
     TextView nameTv,idTv,phoneNumberTv;
-    String name,id,phoneNumber,email;
+    String  name,id,phoneNumber,email;
     public static String docId;
     TextView deleteTv;
     TextView email_Tv;
+    ImageButton saveBtn;
+    boolean IsEdited = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +33,7 @@ public class DetailInformationActivity extends AppCompatActivity {
         phoneNumberTv = findViewById(R.id.detail_sdt);
         deleteTv =findViewById(R.id.detail_delete_tv);
         email_Tv = findViewById(R.id.detail_email);
+        saveBtn = findViewById(R.id.detail_save_btn);
         deleteTv.setOnClickListener(view -> deleteInformation());
         //receive data từ information adapter
         name = getIntent().getStringExtra("Name");

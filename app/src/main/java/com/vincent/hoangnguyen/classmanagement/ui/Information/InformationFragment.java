@@ -1,5 +1,8 @@
 package com.vincent.hoangnguyen.classmanagement.ui.Information;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +15,12 @@ import androidx.lifecycle.ViewModelProvider;
 import com.vincent.hoangnguyen.classmanagement.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.vincent.hoangnguyen.classmanagement.controller.UI.loginAndCreate.CreateAccountActivity;
 import com.vincent.hoangnguyen.classmanagement.databinding.FragmentInformationBinding;
+import com.vincent.hoangnguyen.classmanagement.model.DetailInformationActivity;
+
+import java.util.Objects;
+
 public class InformationFragment extends Fragment {
 
     private FragmentInformationBinding binding;
@@ -23,6 +31,7 @@ public class InformationFragment extends Fragment {
                 new ViewModelProvider(this).get(InformationViewModel.class);
         binding = FragmentInformationBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        //mapping
         nameTv = root.findViewById(R.id.fragment_information_name);
         idTv = root.findViewById(R.id.fragment_information_mssv);
         phoneNumberTv = root.findViewById(R.id.fragment_information_sdt);
@@ -31,10 +40,18 @@ public class InformationFragment extends Fragment {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user != null){
             emailTv.setText(user.getEmail());
-            nameTv.setText(user.getUid());
         }
-
-
+        // lấy thông tin từ bộ nhớ ứng dụng để điền vào fragment thông tin sinh viên
+        SharedPreferences sharedPref = requireActivity().getSharedPreferences("mypref", MODE_PRIVATE);
+        String username = sharedPref.getString("userName", "");
+        String userEmail = sharedPref.getString("userEmail", "");
+        String userID = sharedPref.getString("userId", "");
+        String userPhoneNumber = sharedPref.getString("userPhoneNumber", "");
+        // set text cho các text view
+        nameTv.setText(username);
+        emailTv.setText(userEmail);
+        idTv.setText(userID);
+        phoneNumberTv.setText(userPhoneNumber);
         return root;
     }
 

@@ -20,6 +20,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_class_et4710_test" />
+    <include layout="@layout/content_class_et4710" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

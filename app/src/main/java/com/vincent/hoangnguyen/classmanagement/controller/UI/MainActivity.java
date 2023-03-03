@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton menu_btn;
     Timer timerRefresh;
     private String currentLanguage = "en"; // Current language is English
-
+    private View headerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

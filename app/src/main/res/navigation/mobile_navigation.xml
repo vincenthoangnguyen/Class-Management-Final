@@ -16,10 +16,4 @@
         android:name="com.vincent.hoangnguyen.classmanagement.ui.Information.InformationFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_information" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.vincent.hoangnguyen.classmanagement.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
 </navigation>

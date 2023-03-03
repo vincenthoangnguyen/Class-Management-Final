@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context=".ui.Information.InformationFragment">
     <RelativeLayout
         android:id="@+id/fragment_information_frame_title"
@@ -93,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/text_phoneNumber"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="1dp"
             android:textStyle="bold"
             android:textSize="20sp" />
 
@@ -181,7 +182,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="4dp"
                 android:textStyle="bold"
-                android:text="0"
+                android:text="-1"
                 android:textSize="20sp" />
             <TextView
                 android:layout_marginLeft="25dp"
@@ -197,7 +198,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="4dp"
-                android:text="0"
+                android:text="-1"
                 android:textStyle="bold"
                 android:textSize="20sp" />
         </LinearLayout>

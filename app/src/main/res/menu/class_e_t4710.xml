@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_week1"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:onClick="setUpWeekNumber"
+        android:title="week 1" />
+    <item
+        android:id="@+id/action_week2"
+        android:orderInCategory="100"
+        android:title="week 2"
+        android:onClick="setUpWeekNumber"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_week3"
+        android:orderInCategory="100"
+        android:title="week 3"
+        android:onClick="setUpWeekNumber"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_week4"
+        android:orderInCategory="100"
+        android:title="week 4"
+        android:onClick="setUpWeekNumber"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_week5"
+        android:orderInCategory="100"
+        android:title="week 5"
+        android:onClick="setUpWeekNumber"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_week6"
+        android:orderInCategory="100"
+        android:title="week 6"
+        android:onClick="setUpWeekNumber"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_week7"
+        android:orderInCategory="100"
+        android:title="week 7"
+        android:onClick="setUpWeekNumber"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_week8"
+        android:orderInCategory="100"
+        android:title="week 8"
+        android:onClick="setUpWeekNumber"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_week9"
+        android:orderInCategory="100"
+        android:title="week 9"
+        android:onClick="setUpWeekNumber"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_week10"
+        android:orderInCategory="100"
+        android:title="week 10"
+        android:onClick="setUpWeekNumber"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_week11"
+        android:orderInCategory="100"
+        android:title="week 11"
+        android:onClick="setUpWeekNumber"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_week12"
+        android:orderInCategory="100"
+        android:title="week 12"
+        android:onClick="setUpWeekNumber"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_week13"
+        android:orderInCategory="100"
+        android:title="week 13"
+        android:onClick="setUpWeekNumber"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_week14"
+        android:orderInCategory="100"
+        android:title="week 14"
+        android:onClick="setUpWeekNumber"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_week15"
+        android:orderInCategory="100"
+        android:title="week 15"
+        android:onClick="setUpWeekNumber"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_week16"
+        android:orderInCategory="100"
+        android:title="week 16"
+        android:onClick="setUpWeekNumber"
+        app:showAsAction="never" />
+
+
+
+</menu>

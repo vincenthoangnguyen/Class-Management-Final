@@ -3,7 +3,9 @@ package com.vincent.hoangnguyen.classmanagement.controller.UI.loginAndCreate;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -19,9 +21,11 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.auth.User;
 import com.vincent.hoangnguyen.classmanagement.R;
 import com.vincent.hoangnguyen.classmanagement.model.DetailInformationActivity;
 import com.vincent.hoangnguyen.classmanagement.model.Student;
@@ -68,9 +72,17 @@ public class CreateAccountActivity extends AppCompatActivity {
         if(!isValidated){  // nếu xác thực là false thì nhập lại nếu đúng thì đi tiếp
             return;
         }
+
+        // lưu thông tin người dùng vào bộ nhớ để điền vào màn thông tin người dùng
+        SharedPreferences sharedPref = getSharedPreferences("mypref", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("userName", name_EditText.getText().toString().trim());
+        editor.putString("userEmail",emailEditText.getText().toString().trim() );
+        editor.putString("userId",id_EditText.getText().toString().trim());
+        editor.putString("userPhoneNumber",phoneNumber_EditText.getText().toString().trim());
+        editor.apply();
         // nếu mà isValidated đúng thì gọi tiếp phương thức tạo account trên firebase
         createAccountInFireBase(email,password);
-
     }
 
     private void createAccountInFireBase(String email, String password) {
@@ -86,7 +98,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                     // done
                     Objects.requireNonNull(firebaseAuth.getCurrentUser()).sendEmailVerification();
                     firebaseAuth.signOut();  // signOut account  người dùng phải verify email mới đăng nhập lại đc
-                    saveInformationStudentToList(user);;
+                    saveInformationStudentToList(user);
                     Utility.showToast(CreateAccountActivity.this,getString(R.string.toast_CreateAccountSuccess));
                     finish();  // tắt màn hình hiện tại chuyển đến màn hình login
                 }

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:padding="6dp"
     android:background="@drawable/background"
-    tools:context=".controller.UI.ET4710.Class_ET4710">
+    tools:context=".controller.UI.ET4710.Class_ET4710_Admin">
     <TextView
         android:layout_marginTop="10dp"
         android:id="@+id/Name_class"

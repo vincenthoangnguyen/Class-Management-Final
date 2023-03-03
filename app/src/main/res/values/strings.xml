@@ -25,7 +25,7 @@
     <string name="chooseSubject_main_text">Choose your class</string>
     <string name="mobile_nameSubject">Mobile Application Programming</string>
     <string name="nameSubject_ComputerNetwork">Computer Network</string>
-    <string name="text_SoDoLop">Mobile Application Programming Class Diagram ET4710 -137364</string>
+    <string name="text_SoDoLop">Click the checkin button to take attendance</string>
     <string name="text_OptionLogin">Select user mode</string>
     <string name="text_student">Student</string>
     <string name="text_Teacher">Teacher</string>
@@ -68,5 +68,7 @@
     <string name="action_settings">Settings</string>
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Information</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="text_fullname">Full Name</string>
+    <string name="student_id_tv">Student Id</string>
+    <string name="phone_number_Tv">Phone Number</string>
 </resources>
