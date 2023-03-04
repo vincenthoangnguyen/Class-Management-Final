@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -49,18 +51,9 @@ public class InformationAdapter extends FirestoreRecyclerAdapter<Student,Informa
 
     @Override
     protected void onBindViewHolder(@NonNull InformationHolder holder, int position, @NonNull Student student) {
-    holder.nameTextview.setText(student.getName());
-    holder.mssvTextview.setText(student.getId());
-    holder.timeStamp.setText(Utility.timeStampToString(student.getTimestamp()));
+        holder.nameTextview.setText(student.getName());
+        holder.mssvTextview.setText(student.getId());
 
-    String timeStudentArrive = Utility.timeStampToString(student.getTimestamp());
-
-        // so sánh thời gian học sinh đến với thời gian thầy cài đặt đóng cửa nếu mà đến muộn thì background thành màu đỏ
-        // Thời gian đóng cửa là biến static khai báo bên ClassET_4710_admin
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            if(LocalTime.parse(timeStudentArrive).isAfter(LocalTime.parse(Class_ET4710_Admin.ClosingTime))){ // nếu học sinh đi muộn
-               holder.layout.setBackgroundColor(Color.RED);
-            }
 
             // khi nhấn vào 1 recycleview thì chuyển đến màn detailInformation và put data sang
             holder.itemView.setOnClickListener(view -> {
@@ -70,11 +63,44 @@ public class InformationAdapter extends FirestoreRecyclerAdapter<Student,Informa
                 intent.putExtra("Id",student.getId());
                 intent.putExtra("PhoneNumber",student.getPhoneNumber());
                 intent.putExtra("Email",student.getEmail());
+                intent.putExtra("midtermScore",student.getMidtermScore());
+                intent.putExtra("finalScore",student.getFinalScore());
                 String docID = this.getSnapshots().getSnapshot(position).getId();
                 intent.putExtra("docID", docID);
                 context.startActivity(intent);
             });
-        }
+
+         String[] timeStudentArrive = {Utility.timeStampToString(student.getTimestamp())};
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
+        DocumentReference docRef = db.collection("CheckInTime").document(this.getSnapshots().getSnapshot(position).getId());
+        docRef.get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            // get time checkIn
+                            Timestamp timeCheckIn = documentSnapshot.getTimestamp("CheckInTime");
+                            assert timeCheckIn != null;
+                            timeStudentArrive[0] = Utility.timeStampToString(timeCheckIn);
+                            holder.timeStamp.setText("CheckIn lúc:  " + timeStudentArrive[0]);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                if (LocalTime.parse(timeStudentArrive[0]).isAfter(LocalTime.parse(Class_ET4710_Admin.ClosingTime))) { // nếu học sinh đi muộn
+                                    holder.layout.setBackgroundColor(Color.RED);
+                                }
+                            }
+                        } else {
+                            // The document does not exist
+                            Log.d("TAG", "The document does not exist");
+                        }
+                    }
+                });
+
+        // so sánh thời gian học sinh đến với thời gian thầy cài đặt đóng cửa nếu mà đến muộn thì background thành màu đỏ
+        // Thời gian đóng cửa là biến static khai báo bên ClassET_4710_admin
+
+
     }
     @NonNull
     @Override

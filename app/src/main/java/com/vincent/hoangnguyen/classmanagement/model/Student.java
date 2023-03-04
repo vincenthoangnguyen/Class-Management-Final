@@ -8,8 +8,24 @@ public class Student {
     private String phoneNumber;
     private String email;
     private com.google.firebase.Timestamp timestamp;
-
+    private String midtermScore,finalScore;
     public Student() {
+    }
+
+    public String getMidtermScore() {
+        return midtermScore;
+    }
+
+    public void setMidtermScore(String midtermScore) {
+        this.midtermScore = midtermScore;
+    }
+
+    public String getFinalScore() {
+        return finalScore;
+    }
+
+    public void setFinalScore(String finalScore) {
+        this.finalScore = finalScore;
     }
 
     public String getEmail() {

@@ -50,6 +50,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:text="timeStamp" />
+        android:text="Chưa checkIn" />
 
 </RelativeLayout>

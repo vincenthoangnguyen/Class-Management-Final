@@ -145,16 +145,17 @@ public class MainActivity extends AppCompatActivity {
             }
 
             //if (code.equals("0934660554")) {
-            if(code.equals("123")){
+            if(code.equals("0934660554")){
                 Utility.showToast(MainActivity.this, getString(R.string.toast_welcomeTeacher));
                 startActivity(new Intent(MainActivity.this, Class_ET4710_Admin.class));
             } else {
                 Utility.showToast(MainActivity.this, getString(R.string.toast_youAreNotTeacher));
             }
         });
+
+
         // đọc dữ liệu trên firebase ở đây là đọc daily code được thây cài đặt
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-
         // add time refresh để auto reset khi thầy thay đổi code ko cần phải thoát app ra vào lại
         timerRefresh = new Timer();
         timerRefresh.scheduleAtFixedRate(new TimerTask() {
@@ -195,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
             }
-        }, 0, 5000);
+        }, 0, 5000); 
         // show dialog sau khi nhấn lớp ET4710
         dialog.show();
     }

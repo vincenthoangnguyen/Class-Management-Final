@@ -151,8 +151,8 @@ public class Class_ET4710_Admin extends AppCompatActivity {
 
     private void saveDailyCodeToFirebase(Map dailyCode) {
         changInLoginProgress(true);
-        FirebaseFirestore db  = FirebaseFirestore.getInstance();
         // tạo 1 collection trên firebaseFirestore
+        FirebaseFirestore db  = FirebaseFirestore.getInstance();
         // add để thêm data vào collection đó
 
         db.collection("Daily code").add(dailyCode).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
@@ -161,7 +161,7 @@ public class Class_ET4710_Admin extends AppCompatActivity {
                 changInLoginProgress(false);
                 if(task.isSuccessful()){
                     Utility.showToast(Class_ET4710_Admin.this,getString(R.string.toast_setUpSucssesful));
-                    dailycode_String = Objects.requireNonNull(dailyCode.get("DailyCode")).toString();
+                    dailycode_String = dailyCode.get("DailyCode").toString();
                     dailyCode_textView.setText(getString(R.string.toast_todayCodeIs)+" " + dailycode_String);
                     dailyCode_textView.setVisibility(View.VISIBLE);
                     // nếu lưu thành công thì dùng phương thước dissmiss để không hiển thị
@@ -175,6 +175,7 @@ public class Class_ET4710_Admin extends AppCompatActivity {
 
 
     }
+
     // hàm onclick cho button sinh code tự động
     public void autoGenCode(View view) {
         int leftLimit = 97; // bắt đầu từ kí tự 'a'
@@ -188,10 +189,12 @@ public class Class_ET4710_Admin extends AppCompatActivity {
             buffer.append((char) randomLimitedInt);
         }
         String generatedString = buffer.toString();
+
         // dùng map để lưu thông tin
         Map<String,Object> dailyCode = new HashMap<>();
         dailyCode.put("DailyCode",generatedString);
         dailyCode.put("timestamp",Timestamp.now());
+        // đẩy lên firebase
         saveDailyCodeToFirebase(dailyCode);
 
     }

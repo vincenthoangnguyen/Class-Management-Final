@@ -219,7 +219,7 @@
                 android:layout_marginStart="10dp"
                 android:minWidth="48dp"
                 android:hint="-1"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:gravity="center"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -240,7 +240,7 @@
                 android:layout_marginStart="10dp"
                 android:minWidth="48dp"
                 android:hint="-1"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:gravity="center"
                 android:textSize="20sp"
                 android:textStyle="bold" />

@@ -110,7 +110,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_background_white"
-            android:onClick="goToAdminMode"
             android:text="OK"
             android:textColor="@color/black"
             android:textSize="12sp" />

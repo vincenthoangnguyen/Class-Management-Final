@@ -41,7 +41,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_login);
         //gọi hàm loadLanguage ngay sau khi setContentView để có thể cập nhật ngôn ngữ
         loadLanguage();
@@ -57,7 +56,9 @@ public class LoginActivity extends AppCompatActivity {
         PopupMenu menu = new PopupMenu(LoginActivity.this, menu_language);
         menu.getMenu().add("English");
         menu.getMenu().add("Tiếng Việt");
+        // show menu
         menu.show();
+        // cài đặt sự kiện khi người dùng ấn vào các menu cụ thể
         menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -74,14 +75,14 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
     private void loadLanguage() {
-        Log.d("LANGUAGE","Called");
         SharedPreferences preferences = getSharedPreferences("LanguagePref", MODE_PRIVATE);
         String language = preferences.getString("Language", "English");
-        Log.d("LANGUAGE",language);
         setLanguage(language);
         // dùng setContentView để có thể recreate lại activity mà ko tạo ra vòng lặp vô hạn khi dùng recreate
         setContentView(R.layout.activity_login);
     }
+
+
     private void setLanguage(String language) {
         // Save the selected language using SharedPreferences
         SharedPreferences preferences = getSharedPreferences("LanguagePref", MODE_PRIVATE);
@@ -131,7 +132,7 @@ public class LoginActivity extends AppCompatActivity {
                 changInLoginProgress(false);
                 if (task.isSuccessful()){
                     //login is success
-                    if(firebaseAuth.getCurrentUser().isEmailVerified()){
+                    if(firebaseAuth.getCurrentUser().isEmailVerified()){   // email đã được xác thực
                         // go to main activity
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
