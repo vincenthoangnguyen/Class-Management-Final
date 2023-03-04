@@ -55,8 +55,9 @@ public class ClassET4710 extends AppCompatActivity {
         headerEmail.setText(user.getEmail());
         SharedPreferences sharedPref = getSharedPreferences("mypref", MODE_PRIVATE);
         String username = sharedPref.getString("userName", "");
+        String WeekNumber = sharedPref.getString("WeekNumber", "");
         headerName.setText(username);
-
+        weekTextView.setText(WeekNumber);
     }
 
     @Override
@@ -75,6 +76,13 @@ public class ClassET4710 extends AppCompatActivity {
 
     public void setUpWeekNumber(MenuItem item) {
        weekTextView.setText(item.getTitle().toString());
-       weekTextView.setVisibility(View.VISIBLE);
+        SharedPreferences sharedPref = getSharedPreferences("mypref", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("WeekNumber",item.getTitle().toString());
+        editor.apply();
+        recreate();
+    }
+    public void Recreate(){
+        recreate();
     }
 }

@@ -72,4 +72,27 @@
     <string name="text_fullname">Họ và tên</string>
     <string name="student_id_tv">Mã số sinh viên</string>
     <string name="phone_number_Tv">Số điện thoại</string>
+    <string name="tienTrinhHocTap">Tiến trình học tập</string>
+    <string name="s_bu_i_v_ng">Số Buổi vắng:</string>
+    <string name="i_m_gi_a_k">Điểm giữa kì:</string>
+    <string name="i_m_cu_i_k">Điểm Cuối kì:</string>
+    <string name="giao_di_n_th_y_gi_o">Giao diện thầy giáo</string>
+    <string name="class_closing_time_is">Giờ đóng cửa lớp học là: </string>
+    <string name="checkin_th_nh_c_ng_l_c">CheckIn thành công lúc</string>
+    <string name="week_1">Week 1</string>
+    <string name="week_2">Week 2</string>
+    <string name="week_3">Week 3</string>
+    <string name="week_4">Week 4</string>
+    <string name="week_5">Week 5</string>
+    <string name="week_6">Week 6</string>
+    <string name="week_7">Week 7</string>
+    <string name="week_8">Week 8</string>
+    <string name="week_9">Week 9</string>
+    <string name="week_10">Week 10</string>
+    <string name="week_11">Week 11</string>
+    <string name="week_12">Week 12</string>
+    <string name="week_13">Week 13</string>
+    <string name="week_14">Week 14</string>
+    <string name="week_15">Week 15</string>
+    <string name="week_16">Week 16</string>
 </resources>

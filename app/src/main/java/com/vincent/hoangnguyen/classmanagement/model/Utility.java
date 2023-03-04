@@ -27,5 +27,8 @@ public class Utility {
         //return new SimpleDateFormat("dd-MM-yyyy   HH:mm:ss").format(timestamp.toDate());
         return new SimpleDateFormat("HH:mm:ss").format(timestamp.toDate());
     }
-
+    public static String timeStampToStringHHDD(Timestamp timestamp){
+        //return new SimpleDateFormat("dd-MM-yyyy   HH:mm:ss").format(timestamp.toDate());
+        return new SimpleDateFormat("HH:mm:ss"+"/"+"dd-MM-yyyy ").format(timestamp.toDate());
+    }
 }

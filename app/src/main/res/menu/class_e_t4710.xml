@@ -6,95 +6,95 @@
         android:orderInCategory="100"
         app:showAsAction="never"
         android:onClick="setUpWeekNumber"
-        android:title="week 1" />
+        android:title="@string/week_1" />
     <item
         android:id="@+id/action_week2"
         android:orderInCategory="100"
-        android:title="week 2"
+        android:title="@string/week_2"
         android:onClick="setUpWeekNumber"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_week3"
         android:orderInCategory="100"
-        android:title="week 3"
+        android:title="@string/week_3"
         android:onClick="setUpWeekNumber"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_week4"
         android:orderInCategory="100"
-        android:title="week 4"
+        android:title="@string/week_4"
         android:onClick="setUpWeekNumber"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_week5"
         android:orderInCategory="100"
-        android:title="week 5"
+        android:title="@string/week_5"
         android:onClick="setUpWeekNumber"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_week6"
         android:orderInCategory="100"
-        android:title="week 6"
+        android:title="@string/week_6"
         android:onClick="setUpWeekNumber"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_week7"
         android:orderInCategory="100"
-        android:title="week 7"
+        android:title="@string/week_7"
         android:onClick="setUpWeekNumber"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_week8"
         android:orderInCategory="100"
-        android:title="week 8"
+        android:title="@string/week_8"
         android:onClick="setUpWeekNumber"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_week9"
         android:orderInCategory="100"
-        android:title="week 9"
+        android:title="@string/week_9"
         android:onClick="setUpWeekNumber"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_week10"
         android:orderInCategory="100"
-        android:title="week 10"
+        android:title="@string/week_10"
         android:onClick="setUpWeekNumber"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_week11"
         android:orderInCategory="100"
-        android:title="week 11"
+        android:title="@string/week_11"
         android:onClick="setUpWeekNumber"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_week12"
         android:orderInCategory="100"
-        android:title="week 12"
+        android:title="@string/week_12"
         android:onClick="setUpWeekNumber"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_week13"
         android:orderInCategory="100"
-        android:title="week 13"
+        android:title="@string/week_13"
         android:onClick="setUpWeekNumber"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_week14"
         android:orderInCategory="100"
-        android:title="week 14"
+        android:title="@string/week_14"
         android:onClick="setUpWeekNumber"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_week15"
         android:orderInCategory="100"
-        android:title="week 15"
+        android:title="@string/week_15"
         android:onClick="setUpWeekNumber"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_week16"
         android:orderInCategory="100"
-        android:title="week 16"
+        android:title="@string/week_16"
         android:onClick="setUpWeekNumber"
         app:showAsAction="never" />
 

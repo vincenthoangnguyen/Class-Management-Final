@@ -71,4 +71,27 @@
     <string name="text_fullname">Full Name</string>
     <string name="student_id_tv">Student Id</string>
     <string name="phone_number_Tv">Phone Number</string>
+    <string name="tienTrinhHocTap">Learning progress</string>
+    <string name="s_bu_i_v_ng">Number of Absences:</string>
+    <string name="i_m_gi_a_k">Midterm score:</string>
+    <string name="i_m_cu_i_k">Final Score:</string>
+    <string name="giao_di_n_th_y_gi_o">Teacher\'s interface</string>
+    <string name="class_closing_time_is">Class closing time is:</string>
+    <string name="checkin_th_nh_c_ng_l_c">CheckIn is successful at</string>
+    <string name="week_1">Week 1</string>
+    <string name="week_2">Week 2</string>
+    <string name="week_3">Week 3</string>
+    <string name="week_4">Week 4</string>
+    <string name="week_5">Week 5</string>
+    <string name="week_6">Week 6</string>
+    <string name="week_7">Week 7</string>
+    <string name="week_8">Week 8</string>
+    <string name="week_9">Week 9</string>
+    <string name="week_10">Week 10</string>
+    <string name="week_11">Week 11</string>
+    <string name="week_12">Week 12</string>
+    <string name="week_13">Week 13</string>
+    <string name="week_14">Week 14</string>
+    <string name="week_15">Week 15</string>
+    <string name="week_16">Week 16</string>
 </resources>

@@ -22,7 +22,6 @@ public class DetailInformationActivity extends AppCompatActivity {
     TextView deleteTv;
     TextView email_Tv;
     ImageButton saveBtn;
-    boolean IsEdited = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +46,14 @@ public class DetailInformationActivity extends AppCompatActivity {
         idTv.setText(id);
         phoneNumberTv.setText(phoneNumber);
         email_Tv.setText(email);
+        // save click
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Utility.showToast(DetailInformationActivity.this,"Lưu điểm thành công");
+                finish();
+            }
+        });
     }
 
     private void deleteInformation() {

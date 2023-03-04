@@ -97,8 +97,9 @@ public class CreateAccountActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     // done
                     Objects.requireNonNull(firebaseAuth.getCurrentUser()).sendEmailVerification();
-                    firebaseAuth.signOut();  // signOut account  người dùng phải verify email mới đăng nhập lại đc
                     saveInformationStudentToList(user);
+                    firebaseAuth.signOut();  // signOut account  người dùng phải verify email mới đăng nhập lại đc
+
                     Utility.showToast(CreateAccountActivity.this,getString(R.string.toast_CreateAccountSuccess));
                     finish();  // tắt màn hình hiện tại chuyển đến màn hình login
                 }
@@ -115,7 +116,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
 
     private void saveInformationStudentToList(Student user) {
-        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+       /* FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         firestore.collection("ListStudent").add(user).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
@@ -123,6 +124,15 @@ public class CreateAccountActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
 
                 }
+            }
+        });*/
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
+        assert user1 != null;
+        firestore.collection("ListStudent").document(user1.getUid()).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                changInProgress(false);
             }
         });
     }
